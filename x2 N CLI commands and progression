@@ -1,0 +1,2677 @@
+[hostname]::~$ openclaw plugins update \
+@openclaw/deepseek-provider@2026.7.2-beta.5
+│
+◇  
+deepseek is up to date (2026.7.2-beta.5).
+[hostname]::~$ openclaw plugins update \
+@openclaw/whatsapp@2026.7.2-beta.5
+│
+◇  
+02:28:02 [sqlite/transaction] SQLite transaction lock wait failed
+whatsapp is up to date (2026.7.2-beta.5).
+[hostname]::~$ openclaw gateway restart
+│
+◇  
+
+OpenClaw 2026.7.2-beta.6 ([BUILD_COMMIT_REDACTED]) — The artist formerly known as Clawdbot.
+
+Restarted systemd service: openclaw-gateway.service
+[hostname]::~$ openclaw plugins update \
+@openclaw/whatsapp@2026.7.2-beta.5
+│
+◇  
+whatsapp is up to date (2026.7.2-beta.5).
+[hostname]::~$ openclaw gateway restart
+│
+◇  
+
+OpenClaw 2026.7.2-beta.6 ([BUILD_COMMIT_REDACTED]) — Ah, the fruit tree company!
+
+Restarted systemd service: openclaw-gateway.service
+[hostname]::~$ openclaw gateway status --deep
+
+OpenClaw 2026.7.2-beta.6 ([BUILD_COMMIT_REDACTED]) — Fresh shell, same claws—molting is just semver for crustaceans.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+CLI version: 2026.7.2-beta.6 (/usr/bin/openclaw)
+Gateway version: 2026.7.2-beta.6
+
+Runtime: running (pid 2866931, state active, sub running, last exit 0, reason 0)
+Recent restart handoff: full-process via systemd; source=operator-restart; reason=gateway.restart; pid=[PID_REDACTED]; age=17s; expiresIn=42s
+Connectivity probe: ok
+Capability: connected-no-operator-scope
+
+Established clients: 4
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+If logs show protocol mismatch after rollback, stop stale OpenClaw client processes listed here and re-run gateway status.
+
+Listening: 127.0.0.1:18789, [::1]:18789
+Plugin version drift: 4 active official plugins not on gateway 2026.7.2-beta.6
+- brave: 2026.7.1 (clawhub) → expected 2026.7.2-beta.6
+- deepseek: 2026.7.2-beta.5 (npm) → expected 2026.7.2-beta.6
+- llama-cpp: 2026.7.1 (clawhub) → expected 2026.7.2-beta.6
+- whatsapp: 2026.7.2-beta.5 (npm) → expected 2026.7.2-beta.6
+Fix: update each drifted plugin:
+- openclaw plugins update brave
+- openclaw plugins update @openclaw/deepseek-provider@2026.7.2-beta.6
+- openclaw plugins update llama-cpp
+- openclaw plugins update @openclaw/whatsapp@2026.7.2-beta.6
+Then run openclaw gateway restart.
+
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ openclaw plugins update brave
+
+openclaw plugins update @openclaw/deepseek-provider@2026.7.2-beta.6
+
+openclaw plugins update llama-cpp
+
+openclaw plugins update @openclaw/whatsapp@2026.7.2-beta.6
+│
+◇  
+02:31:41 [sqlite/transaction] SQLite transaction lock wait failed
+02:31:41 [sqlite/transaction] SQLite transaction lock wait failed
+02:31:41 [sqlite/transaction] SQLite transaction lock wait failed
+02:31:42 [sqlite/transaction] slow SQLite transaction lock wait
+Resolving clawhub:@openclaw/brave-plugin…
+  Package   @openclaw/brave-plugin@2026.7.1
+  Type      plugin
+  Requires  pluginApi >=2026.7.1 · minGateway >=2026.4.10
+  ClawHub   view plugin
+Downloading plugin @openclaw/brave-plugin@2026.7.1 from ClawHub…
+Extracting /tmp/openclaw/openclaw-clawhub-clawpack-[TEMP_ID_REDACTED]/openclaw-brave-plugin-2026.7.1.tgz…
+Plugin manifest id "brave" differs from npm package name "@openclaw/brave-plugin"; using manifest id as the config key.
+Installing to /home/[USER]/.openclaw/extensions/brave…
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+brave already at 2026.7.1.
+Restart the gateway to load plugins and hooks.
+│
+◇  
+Could not check deepseek before update; falling back to installer path: Package not found on npm: @openclaw/deepseek-provider@2026.7.2-beta.6. See https://docs.openclaw.ai/tools/plugin for installable plugins.
+Failed to update deepseek: npm package not found for @openclaw/deepseek-provider@2026.7.2-beta.6.
+│
+◇  
+Resolving clawhub:@openclaw/llama-cpp-provider…
+  Package   @openclaw/llama-cpp-provider@2026.7.1
+  Type      plugin
+  Requires  pluginApi >=2026.7.1 · minGateway >=2026.6.2
+  ClawHub   view plugin
+Downloading plugin @openclaw/llama-cpp-provider@2026.7.1 from ClawHub…
+Extracting /tmp/openclaw/openclaw-clawhub-clawpack-[TEMP_ID_REDACTED]/openclaw-llama-cpp-provider-2026.7.1.tgz…
+Plugin manifest id "llama-cpp" differs from npm package name "@openclaw/llama-cpp-provider"; using manifest id as the config key.
+Installing to /home/[USER]/.openclaw/extensions/llama-cpp…
+Installing plugin dependencies…
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+llama-cpp already at 2026.7.1.
+Restart the gateway to load plugins and hooks.
+02:32:22 [sqlite/transaction] slow SQLite transaction lock wait
+│
+◇  
+Could not check whatsapp before update; falling back to installer path: Package not found on npm: @openclaw/whatsapp@2026.7.2-beta.6. See https://docs.openclaw.ai/tools/plugin for installable plugins.
+Failed to update whatsapp: npm package not found for @openclaw/whatsapp@2026.7.2-beta.6.
+02:32:32 [sqlite/transaction] slow SQLite transaction lock wait
+[hostname]::~$ openclaw plugins update brave
+
+openclaw plugins update @openclaw/deepseek-provider@2026.7.2-beta.6
+
+openclaw plugins update llama-cpp
+
+openclaw plugins update @openclaw/whatsapp@2026.7.2-beta.6
+│
+◇  
+Resolving clawhub:@openclaw/brave-plugin…
+  Package   @openclaw/brave-plugin@2026.7.1
+  Type      plugin
+  Requires  pluginApi >=2026.7.1 · minGateway >=2026.4.10
+  ClawHub   view plugin
+Downloading plugin @openclaw/brave-plugin@2026.7.1 from ClawHub…
+Extracting /tmp/openclaw/openclaw-clawhub-clawpack-[TEMP_ID_REDACTED]/openclaw-brave-plugin-2026.7.1.tgz…
+Plugin manifest id "brave" differs from npm package name "@openclaw/brave-plugin"; using manifest id as the config key.
+Installing to /home/[USER]/.openclaw/extensions/brave…
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+brave already at 2026.7.1.
+Restart the gateway to load plugins and hooks.
+│
+◇  
+Could not check deepseek before update; falling back to installer path: Package not found on npm: @openclaw/deepseek-provider@2026.7.2-beta.6. See https://docs.openclaw.ai/tools/plugin for installable plugins.
+Failed to update deepseek: npm package not found for @openclaw/deepseek-provider@2026.7.2-beta.6.
+│
+◇  
+Resolving clawhub:@openclaw/llama-cpp-provider…
+  Package   @openclaw/llama-cpp-provider@2026.7.1
+  Type      plugin
+  Requires  pluginApi >=2026.7.1 · minGateway >=2026.6.2
+  ClawHub   view plugin
+Downloading plugin @openclaw/llama-cpp-provider@2026.7.1 from ClawHub…
+Extracting /tmp/openclaw/openclaw-clawhub-clawpack-[TEMP_ID_REDACTED]/openclaw-llama-cpp-provider-2026.7.1.tgz…
+Plugin manifest id "llama-cpp" differs from npm package name "@openclaw/llama-cpp-provider"; using manifest id as the config key.
+Installing to /home/[USER]/.openclaw/extensions/llama-cpp…
+Installing plugin dependencies…
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+llama-cpp already at 2026.7.1.
+Restart the gateway to load plugins and hooks.
+│
+◇  
+Could not check whatsapp before update; falling back to installer path: Package not found on npm: @openclaw/whatsapp@2026.7.2-beta.6. See https://docs.openclaw.ai/tools/plugin for installable plugins.
+Failed to update whatsapp: npm package not found for @openclaw/whatsapp@2026.7.2-beta.6.
+[hostname]::~$ for p in \
+  openclaw \
+  @openclaw/whatsapp \
+  @openclaw/deepseek-provider \
+  @openclaw/brave-plugin \
+  @openclaw/llama-cpp-provider
+do
+  echo
+  echo "===== $p ====="
+  npm view "$p" dist-tags --json
+done
+
+===== openclaw =====
+{
+  "alpha": "2026.5.19-alpha.1",
+  "latest": "2026.7.1-2",
+  "beta": "2026.8.1-beta.1",
+  "extended-stable": "2026.6.34"
+}
+
+===== @openclaw/whatsapp =====
+{
+  "alpha": "2026.5.19-alpha.1",
+  "latest": "2026.7.1",
+  "extended-stable": "2026.6.34",
+  "beta": "2026.7.2-beta.7"
+}
+
+===== @openclaw/deepseek-provider =====
+{
+  "placeholder": "0.0.0",
+  "latest": "2026.7.1",
+  "extended-stable": "2026.6.34",
+  "beta": "2026.7.2-beta.7"
+}
+
+===== @openclaw/brave-plugin =====
+{
+  "alpha": "2026.5.19-alpha.1",
+  "latest": "2026.7.1",
+  "extended-stable": "2026.6.34",
+  "beta": "2026.7.2-beta.7"
+}
+
+===== @openclaw/llama-cpp-provider =====
+{
+  "latest": "2026.7.1",
+  "extended-stable": "2026.6.34",
+  "beta": "2026.7.2-beta.7"
+}
+[hostname]::~$ for p in \
+  openclaw \
+  @openclaw/whatsapp \
+  @openclaw/deepseek-provider \
+  @openclaw/brave-plugin \
+  @openclaw/llama-cpp-provider
+do
+  printf "%-40s " "$p"
+  npm view "$p@2026.7.2-beta.6" version 2>/dev/null \
+    || echo "beta.6 NOT PUBLISHED"
+done
+openclaw                                 2026.7.2-beta.6
+@openclaw/whatsapp                       beta.6 NOT PUBLISHED
+@openclaw/deepseek-provider              beta.6 NOT PUBLISHED
+@openclaw/brave-plugin                   beta.6 NOT PUBLISHED
+@openclaw/llama-cpp-provider             beta.6 NOT PUBLISHED
+[hostname]::~$ npm view openclaw@2026.7.2-beta.7 version
+2026.7.2-beta.7
+[hostname]::~$ openclaw update --tag 2026.7.2-beta.7 --dry-run --json
+{
+  "dryRun": true,
+  "root": "/usr/lib/node_modules/openclaw",
+  "installKind": "package",
+  "mode": "npm",
+  "updateInstallKind": "package",
+  "switchToGit": false,
+  "switchToPackage": false,
+  "restart": true,
+  "requestedChannel": null,
+  "storedChannel": null,
+  "effectiveChannel": "stable",
+  "tag": "openclaw@2026.7.2-beta.7",
+  "currentVersion": "2026.7.2-beta.6",
+  "targetVersion": "2026.7.2-beta.7",
+  "downgradeRisk": false,
+  "actions": [
+    "Run global package manager update with spec openclaw@2026.7.2-beta.7",
+    "Run plugin update sync after core update",
+    "Refresh shell completion cache (if needed)",
+    "Restart gateway service and run doctor checks"
+  ],
+  "notes": []
+}
+[hostname]::~$ openclaw plugins update @openclaw/brave-plugin@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/deepseek-provider@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/llama-cpp-provider@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/whatsapp@2026.7.2-beta.7
+│
+◇  
+No install record for "@openclaw/brave-plugin@2026.7.2-beta.7".
+│
+◇  
+Failed to update deepseek: plugin "deepseek" requires plugin API >=2026.7.2-beta.7, but this OpenClaw runtime exposes 2026.7.2-beta.6. Upgrade OpenClaw or install a compatible plugin version and retry.
+│
+◇  
+No install record for "@openclaw/llama-cpp-provider@2026.7.2-beta.7".
+│
+◇  
+Failed to update whatsapp: plugin "whatsapp" requires plugin API >=2026.7.2-beta.7, but this OpenClaw runtime exposes 2026.7.2-beta.6. Upgrade OpenClaw or install a compatible plugin version and retry.
+[hostname]::~$ openclaw update --tag 2026.7.2-beta.7 --no-restart
+│
+◇  
+Updating OpenClaw...
+
+--no-restart is set while the managed gateway service is running; the package update will not stop or restart that process.
+
+Update Result: ERROR
+  Root: /usr/lib/node_modules/openclaw
+  Reason: global install stage
+  Before: 2026.7.2-beta.6
+  After: 2026.7.2-beta.6
+
+Recovery hints:
+  - Detected permission failure (EACCES). Re-run with a writable global prefix or sudo (for system-managed Node installs).
+  - If you recover with sudo/manual package install on a managed Gateway, stop the Gateway first so it does not load files while the package tree is being replaced.
+  - Example: npm config set prefix ~/.local && npm i -g openclaw@latest
+  - System install outline: openclaw gateway stop -> sudo <system-npm> i -g openclaw@latest -> openclaw gateway install --force -> openclaw gateway restart.
+
+Total time: 241ms
+[hostname]::~$ sudo openclaw update --tag 2026.7.2-beta.7 --no-restart
+02:40:45 [state/db] state database schema migration pending; verifying integrity first
+│
+◇  
+02:40:47 [state/db] state database schema migration pending; verifying integrity first
+02:40:52 [state-migrations] Auto-migrated legacy state:
+- Migrated shared state audit event ledger → versioned message lifecycle schema
+- Migrated shared state tables to SQLite STRICT typing (71)
+- Migrated config.lastTouchedAt → shared SQLite state
+│
+◇  Doctor changes ──────────────────────────────────────────────────────────────────╮
+│                                                                                   │
+│  - Migrated shared state audit event ledger → versioned message lifecycle schema  │
+│  - Migrated shared state tables to SQLite STRICT typing (71)                      │
+│  - Migrated config.lastTouchedAt → shared SQLite state                            │
+│                                                                                   │
+├───────────────────────────────────────────────────────────────────────────────────╯
+OpenClaw config is invalid
+File: ~/.openclaw/openclaw.json
+Problem:
+  - meta: Unrecognized key: "lastTouchedAt"
+  - gateway.controlUi: Unrecognized key: "allowInsecureAuth"
+  - gateway.nodes: Unrecognized key: "denyCommands"
+Legacy config keys detected:
+  - models.providers: Catalog-known model compat values are provider-owned; run "openclaw doctor --fix" to remove matching config overrides.
+  - agents.defaults.models: agents.defaults.models no longer restricts model overrides; run "openclaw doctor --fix" to preserve the previous restriction in agents.defaults.modelPolicy.allow.
+  - : Approved tier-eval configuration surfaces were consolidated. Run "openclaw doctor --fix".
+  - : Final layout aliases were retired. Run "openclaw doctor --fix".
+
+Fix: openclaw doctor --fix
+Inspect: openclaw config validate
+Audit, status, health, logs, tasks list/audit, and doctor commands still run with invalid config.
+Updating OpenClaw...
+
+--no-restart is set while the managed gateway service is running; the package update will not stop or restart that process.
+│
+◇  ✓ Updating via package manager (33.91s)
+│
+◇  ✓ Running doctor checks (37.31s)
+
+Update Result: OK
+  Root: /usr/lib/node_modules/openclaw
+  Before: 2026.7.2-beta.6
+  After: 2026.7.2-beta.7
+
+Total time: 72.45s
+│
+◇  
+02:42:46 [sqlite/transaction] slow SQLite transaction lock wait
+┌  OpenClaw doctor
+│
+◇  Command owner ─────────────────────────────────────────────────────────╮
+│                                                                         │
+│  No command owner is configured.                                        │
+│  A command owner is the human operator account allowed to run           │
+│  owner-only commands and approve dangerous actions, including           │
+│  /diagnostics, /export-session, /export-trajectory, /config, and exec   │
+│  approvals.                                                             │
+│  DM pairing only lets someone talk to the bot; it does not make that    │
+│  sender the owner for privileged commands.                              │
+│  Fix: set commands.ownerAllowFrom to your channel user id, for example  │
+│  openclaw config set commands.ownerAllowFrom '["telegram:[TELEGRAM_USER_ID]"]'   │
+│  Restart the gateway after changing this if it is already running.      │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+│
+◇  Plugin registry ───────────────────────────────────────────╮
+│                                                             │
+│  Plugin registry refreshed: 53/75 enabled plugins indexed.  │
+│                                                             │
+├─────────────────────────────────────────────────────────────╯
+│
+◇  State integrity ────────────────────────────────────────────────────────╮
+│                                                                          │
+│  - OAuth dir not present (~/.openclaw/credentials). Skipping create      │
+│    because no WhatsApp/pairing channel config is active.                 │
+│  - Multiple state directories detected. This can split session history.  │
+│    - /home/[USER]/.openclaw                                             │
+│    Active state dir: ~/.openclaw                                         │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway heap ──────────────────────────────────────────────────────────╮
+│                                                                         │
+│  not set; adaptive default 8192 MiB (50% of [SYSTEM_RAM_REDACTED] physical memory,  │
+│  target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])             │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway service config ─────────────────────────────────────────────────╮
+│                                                                          │
+│  - Gateway service was installed by OpenClaw 2026.7.1-2; current CLI is  │
+│    2026.7.2-beta.7.                                                      │
+│    (/root/.config/systemd/user/openclaw-gateway.service)                 │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway service config ──────────────────────────────────────────╮
+│                                                                   │
+│  Update parent did not authorize changes to this gateway service  │
+│  definition; leaving it unchanged.                                │
+│                                                                   │
+├───────────────────────────────────────────────────────────────────╯
+│
+◇  Security ─────────────────────────────────────────────────────────────╮
+│                                                                        │
+│  - WARNING: openclaw.json contains plaintext secret-bearing config     │
+│    fields.                                                             │
+│    Paths: gateway.auth.token                                           │
+│    Agents or workspace tools that can read config files may see these  │
+│    API keys/tokens.                                                    │
+│    Migrate them to SecretRefs with openclaw secrets configure or       │
+│    openclaw secrets apply, then verify with openclaw secrets audit     │
+│    --check.                                                            │
+│  - Run: openclaw security audit --deep                                 │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+│
+◇  Doctor information ─────────────────────────────────────────────────────╮
+│                                                                          │
+│  - Local STT auto-selection: whisper (observed=unknown); Python Whisper  │
+│    chooses its runtime device when the model loads.                      │
+│    path: tools.media.models                                              │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway ───────────────────────────────────────────────────────────╮
+│                                                                     │
+│  Gateway connect failed: gateway closed (1006 abnormal closure (no  │
+│  close frame)): no close reason                                     │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway connection ────────────────────╮
+│                                         │
+│  Gateway target: ws://127.0.0.1:18789   │
+│  Source: local loopback                 │
+│  Config: /root/.openclaw/openclaw.json  │
+│  Bind: loopback                         │
+│                                         │
+├─────────────────────────────────────────╯
+│
+◇  Memory search ───────────────────────────────────────────────────────╮
+│                                                                       │
+│  Memory search provider is set to "openai" but no API key was found.  │
+│  Semantic recall will not work without a valid API key.               │
+│                                                                       │
+│                                                                       │
+│  Fix (pick one):                                                      │
+│  - Set OPENAI_API_KEY in your environment                             │
+│  - Configure credentials: openclaw configure --section model          │
+│  - To disable: openclaw config set memory.search.enabled false        │
+│                                                                       │
+│  Verify: openclaw memory status --deep                                │
+│                                                                       │
+├───────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway ────────────────────────────────────────────────────────────────╮
+│                                                                          │
+│  Runtime: running (pid 2875654, state active, sub running, last exit 0,  │
+│  reason 0)                                                               │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+└  Doctor complete.
+
+Updating plugins...
+npm plugins: 0 updated, 1 unchanged.
+┌  OpenClaw doctor
+│
+◇  Command owner ─────────────────────────────────────────────────────────╮
+│                                                                         │
+│  No command owner is configured.                                        │
+│  A command owner is the human operator account allowed to run           │
+│  owner-only commands and approve dangerous actions, including           │
+│  /diagnostics, /export-session, /export-trajectory, /config, and exec   │
+│  approvals.                                                             │
+│  DM pairing only lets someone talk to the bot; it does not make that    │
+│  sender the owner for privileged commands.                              │
+│  Fix: set commands.ownerAllowFrom to your channel user id, for example  │
+│  openclaw config set commands.ownerAllowFrom '["telegram:[TELEGRAM_USER_ID]"]'   │
+│  Restart the gateway after changing this if it is already running.      │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+│
+◇  Plugin registry ───────────────────────────────────────────╮
+│                                                             │
+│  Plugin registry refreshed: 53/75 enabled plugins indexed.  │
+│                                                             │
+├─────────────────────────────────────────────────────────────╯
+│
+◇  State integrity ────────────────────────────────────────────────────────╮
+│                                                                          │
+│  - OAuth dir not present (~/.openclaw/credentials). Skipping create      │
+│    because no WhatsApp/pairing channel config is active.                 │
+│  - Multiple state directories detected. This can split session history.  │
+│    - /home/[USER]/.openclaw                                             │
+│    Active state dir: ~/.openclaw                                         │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway heap ──────────────────────────────────────────────────────────╮
+│                                                                         │
+│  not set; adaptive default 8192 MiB (50% of [SYSTEM_RAM_REDACTED] physical memory,  │
+│  target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])             │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway service config ─────────────────────────────────────────────────╮
+│                                                                          │
+│  - Gateway service was installed by OpenClaw 2026.7.1-2; current CLI is  │
+│    2026.7.2-beta.7.                                                      │
+│    (/root/.config/systemd/user/openclaw-gateway.service)                 │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway service config ──────────────────────────────────────────╮
+│                                                                   │
+│  Update parent did not authorize changes to this gateway service  │
+│  definition; leaving it unchanged.                                │
+│                                                                   │
+├───────────────────────────────────────────────────────────────────╯
+│
+◇  Security ─────────────────────────────────────────────────────────────╮
+│                                                                        │
+│  - WARNING: openclaw.json contains plaintext secret-bearing config     │
+│    fields.                                                             │
+│    Paths: gateway.auth.token                                           │
+│    Agents or workspace tools that can read config files may see these  │
+│    API keys/tokens.                                                    │
+│    Migrate them to SecretRefs with openclaw secrets configure or       │
+│    openclaw secrets apply, then verify with openclaw secrets audit     │
+│    --check.                                                            │
+│  - Run: openclaw security audit --deep                                 │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+│
+◇  Doctor information ─────────────────────────────────────────────────────╮
+│                                                                          │
+│  - Local STT auto-selection: whisper (observed=unknown); Python Whisper  │
+│    chooses its runtime device when the model loads.                      │
+│    path: tools.media.models                                              │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway ──────────────────────────────────────────────────────────────╮
+│                                                                        │
+│  Gateway connect failed: gateway closed (1008): unauthorized: gateway  │
+│  token mismatch (provide gateway auth token)                           │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway connection ────────────────────╮
+│                                         │
+│  Gateway target: ws://127.0.0.1:18789   │
+│  Source: local loopback                 │
+│  Config: /root/.openclaw/openclaw.json  │
+│  Bind: loopback                         │
+│                                         │
+├─────────────────────────────────────────╯
+│
+◇  Memory search ───────────────────────────────────────────────────────╮
+│                                                                       │
+│  Memory search provider is set to "openai" but no API key was found.  │
+│  Semantic recall will not work without a valid API key.               │
+│                                                                       │
+│                                                                       │
+│  Fix (pick one):                                                      │
+│  - Set OPENAI_API_KEY in your environment                             │
+│  - Configure credentials: openclaw configure --section model          │
+│  - To disable: openclaw config set memory.search.enabled false        │
+│                                                                       │
+│  Verify: openclaw memory status --deep                                │
+│                                                                       │
+├───────────────────────────────────────────────────────────────────────╯
+│
+◇  Gateway ────────────────────────────────────────────────────────────────╮
+│                                                                          │
+│  Runtime: running (pid 2875654, state active, sub running, last exit 0,  │
+│  reason 0)                                                               │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────╯
+│
+└  Doctor complete.
+gateway connect failed: GatewayClientRequestError: unauthorized: gateway token mismatch (provide gateway auth token)
+
+Shell completion
+│
+◇  Enable bash shell completion for openclaw?
+│  Yes
+Installing completion in /root/.bashrc...
+Completion installed. Restart your shell or run: source /root/.bashrc
+
+Gateway: restart skipped (--no-restart).
+Tip: Run `openclaw doctor`, then `openclaw gateway restart` to apply updates to a running gateway.
+Upgraded! Now with 23% more sass.
+[hostname]::~$ openclaw plugins update @openclaw/brave-plugin@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/deepseek-provider@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/llama-cpp-provider@2026.7.2-beta.7
+
+openclaw plugins update @openclaw/whatsapp@2026.7.2-beta.7
+│
+◇  
+No install record for "@openclaw/brave-plugin@2026.7.2-beta.7".
+│
+◇  
+Installing @openclaw/deepseek-provider@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-deepseek-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "deepseek" differs from npm package name "@openclaw/deepseek-provider"; using manifest id as the config key.
+Updated deepseek: 2026.7.2-beta.5 -> 2026.7.2-beta.7.
+Restart the gateway to load plugins and hooks.
+│
+◇  
+No install record for "@openclaw/llama-cpp-provider@2026.7.2-beta.7".
+02:44:36 [sqlite/transaction] SQLite transaction lock wait failed
+02:44:36 [sqlite/transaction] SQLite transaction lock wait failed
+02:44:37 [sqlite/transaction] SQLite transaction lock wait failed
+│
+◇  
+02:44:46 [sqlite/transaction] slow SQLite transaction lock wait
+Installing @openclaw/whatsapp@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-whatsapp-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Updated whatsapp: 2026.7.2-beta.5 -> 2026.7.2-beta.7.
+Restart the gateway to load plugins and hooks.
+[hostname]::~$ openclaw config validate
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Powered by whichever model is free this week.
+
+Config valid: ~/.openclaw/openclaw.json
+[hostname]::~$ openclaw gateway restart
+openclaw gateway status --deep --require-rpc
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — No, I can't solve captchas. Yes, that's exactly what a robot would say.
+
+Gateway service definition needs repair:
+- service was installed by OpenClaw 2026.7.2-beta.6, current CLI is 2026.7.2-beta.7
+
+Installed systemd service: /home/[USER]/.config/systemd/user/openclaw-gateway.service
+Previous unit backed up to: /home/[USER]/.config/systemd/user/openclaw-gateway.service.bak
+Gateway service definition repaired and restarted.
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I'll refactor your busywork like it owes me money.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+Runtime: stopped (pid 2881726, state deactivating, sub stop-sigterm, last exit 0, reason 0)
+Recent restart handoff: full-process via systemd; source=operator-restart; reason=gateway.restart; pid=[PID_REDACTED]; age=16s; expiresIn=43s
+Read probe: failed
+Probe target: ws://127.0.0.1:18789
+  gateway closed (1006 abnormal closure (no close frame)): no close reason
+  Gateway target: ws://127.0.0.1:18789
+  Source: cli --url
+  Config: /home/[USER]/.openclaw/openclaw.json
+  Possible causes:
+  - Connection dropped without a close frame (retry; check network and gateway load)
+  - Gateway not yet ready to accept connections (retry after a moment)
+  - TLS mismatch (connecting with ws:// to a wss:// gateway, or vice versa)
+  - Gateway process stopped or became unreachable (confirm it is still running)
+  Run `openclaw doctor` for diagnostics.
+
+Service is loaded but not running (likely exited immediately).
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Logs: journalctl --user -u openclaw-gateway.service -n 200 --no-pager
+Restart attempts: /home/[USER]/.openclaw/logs/gateway-restart.log
+
+Port 18789 is already in use.
+- pid 2881726 [USER]: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789 (127.0.0.1:18789)
+- pid 2881726 [USER]: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789 ([::1]:18789)
+Listening: 127.0.0.1:18789, [::1]:18789
+Plugin version drift: 2 active official plugins not on gateway 2026.7.2-beta.7
+- brave: 2026.7.1 (clawhub) → expected 2026.7.2-beta.7
+- llama-cpp: 2026.7.1 (clawhub) → expected 2026.7.2-beta.7
+Fix: update each drifted plugin:
+- openclaw plugins update brave
+- openclaw plugins update llama-cpp
+Then run openclaw gateway restart.
+
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ openclaw plugins install \
+  npm:@openclaw/brave-plugin@2026.7.2-beta.7 \
+  --force --pin
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Home is wherever port 18789 is.
+
+Installing @openclaw/brave-plugin@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "brave" differs from npm package name "@openclaw/brave-plugin"; using manifest id as the config key.
+Config warnings:
+- plugins.entries.brave: plugin brave: duplicate plugin id detected; global plugin will be overridden by global plugin (/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin/dist/index.js)
+Removed previous plugin install directory: ~/.openclaw/extensions/brave
+Installed plugin: brave
+Restart the gateway to load plugins.
+Pinned npm install record to @openclaw/brave-plugin@2026.7.2-beta.7.
+02:55:22 [sqlite/transaction] slow SQLite transaction lock wait
+[hostname]::~$ openclaw plugins install \
+  npm:@openclaw/brave-plugin@2026.7.2-beta.7 \
+  --force --pin
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I don't judge, but your missing API keys are absolutely judging you.
+
+Installing @openclaw/brave-plugin@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "brave" differs from npm package name "@openclaw/brave-plugin"; using manifest id as the config key.
+Installed plugin: brave
+Restart the gateway to load plugins.
+Pinned npm install record to @openclaw/brave-plugin@2026.7.2-beta.7.
+[hostname]::~$ openclaw plugins install \
+  npm:@openclaw/llama-cpp-provider@2026.7.2-beta.7 \
+  --force --pin
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Alexa, but with taste.
+
+Installing @openclaw/llama-cpp-provider@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "llama-cpp" differs from npm package name "@openclaw/llama-cpp-provider"; using manifest id as the config key.
+Config warnings:
+- plugins.entries.llama-cpp: plugin llama-cpp: duplicate plugin id detected; global plugin will be overridden by global plugin (/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider/dist/index.js)
+Removed previous plugin install directory: ~/.openclaw/extensions/llama-cpp
+Installed plugin: llama-cpp
+Restart the gateway to load plugins.
+Pinned npm install record to @openclaw/llama-cpp-provider@2026.7.2-beta.7.
+[hostname]::~$ openclaw plugins inspect brave --json
+openclaw plugins inspect llama-cpp --json
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "brave",
+    "name": "Brave",
+    "description": "OpenClaw Brave Search provider plugin for web search.",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/brave-plugin",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [],
+    "cliBackendIds": [],
+    "providerIds": [],
+    "embeddingProviderIds": [],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [
+      "brave"
+    ],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configUiHints": {
+      "webSearch.apiKey": {
+        "label": "Brave Search API Key",
+        "help": "Brave Search API key (fallback: BRAVE_API_KEY env var).",
+        "sensitive": true,
+        "placeholder": "BSA..."
+      },
+      "webSearch.mode": {
+        "label": "Brave Search Mode",
+        "help": "Brave Search mode: web or llm-context."
+      },
+      "webSearch.baseUrl": {
+        "label": "Brave Search Base URL",
+        "help": "Optional Brave-compatible API base URL for trusted proxies. Defaults to https://api.search.brave.com."
+      }
+    },
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "webSearch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "apiKey": {
+              "type": [
+                "string",
+                "object"
+              ]
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "web",
+                "llm-context"
+              ]
+            },
+            "baseUrl": {
+              "type": [
+                "string",
+                "object"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "contracts": {
+      "webSearchProviders": [
+        "brave"
+      ]
+    },
+    "imported": false,
+    "dependencyStatus": {
+      "hasDependencies": false,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": []
+    }
+  },
+  "shape": "plain-capability",
+  "capabilityMode": "plain",
+  "capabilityCount": 1,
+  "capabilities": [
+    {
+      "kind": "web-search",
+      "ids": [
+        "brave"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/brave-plugin@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/brave-plugin",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/brave-plugin@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T07:56:03.762Z",
+    "installedAt": "2026-08-13T07:56:06.875Z"
+  }
+}
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "llama-cpp",
+    "name": "llama.cpp Provider",
+    "description": "Local GGUF text inference and embeddings through node-llama-cpp.",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/llama-cpp-provider",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [
+      "llama-cpp"
+    ],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [],
+    "cliBackendIds": [],
+    "providerIds": [
+      "llama-cpp"
+    ],
+    "embeddingProviderIds": [
+      "local"
+    ],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    },
+    "contracts": {
+      "embeddingProviders": [
+        "local"
+      ]
+    },
+    "imported": false,
+    "dependencyStatus": {
+      "hasDependencies": true,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": [
+        {
+          "name": "node-llama-cpp",
+          "spec": "3.19.1",
+          "installed": true,
+          "optional": true,
+          "resolvedPath": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]/node_modules/node-llama-cpp"
+        }
+      ]
+    }
+  },
+  "shape": "hybrid-capability",
+  "capabilityMode": "hybrid",
+  "capabilityCount": 2,
+  "capabilities": [
+    {
+      "kind": "text-inference",
+      "ids": [
+        "llama-cpp"
+      ]
+    },
+    {
+      "kind": "embedding",
+      "ids": [
+        "local"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/llama-cpp-provider@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/llama-cpp-provider",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/llama-cpp-provider@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T07:56:47.041Z",
+    "installedAt": "2026-08-13T07:57:08.488Z"
+  }
+}
+[hostname]::~$ systemctl --user stop openclaw-gateway.service
+[hostname]::~$ ss -ltnp | grep 18789
+[hostname]::~$ systemctl --user start openclaw-gateway.service
+[hostname]::~$ openclaw gateway status --deep --require-rpc
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I've seen your commit messages. We'll work on that together.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+CLI version: 2026.7.2-beta.7 (/usr/bin/openclaw)
+Gateway version: 2026.7.2-beta.7
+
+Runtime: running (pid 2885899, state active, sub running, last exit 0, reason 0)
+Read probe: ok
+Capability: connected-no-operator-scope
+
+Established clients: 3
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+If logs show protocol mismatch after rollback, stop stale OpenClaw client processes listed here and re-run gateway status.
+
+Listening: 127.0.0.1:18789, [::1]:18789
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ ps -fp $(pgrep -f '/usr/lib/node_modules/openclaw/dist/index.js gateway')
+UID          PID    PPID  C STIME TTY          TIME CMD
+[USER]  [PID_REDACTED] [PPID_REDACTED] 99 02:59 ? 00:00:29 /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+[hostname]::~$ openclaw plugins install npm:@openclaw/brave-plugin@2026.7.2-beta.7 --force --pin
+openclaw plugins install npm:@openclaw/llama-cpp-provider@2026.7.2-beta.7 --force --pin
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I'm not AI-powered, I'm AI-possessed. Big difference.
+
+Installing @openclaw/brave-plugin@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "brave" differs from npm package name "@openclaw/brave-plugin"; using manifest id as the config key.
+Installed plugin: brave
+Restart the gateway to load plugins.
+Pinned npm install record to @openclaw/brave-plugin@2026.7.2-beta.7.
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I hold 200k tokens of context and exactly one grudge.
+
+Installing @openclaw/llama-cpp-provider@2026.7.2-beta.7 into /home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]…
+npm rejected managed npm overrides; retrying plugin install without npm-incompatible overrides for this npm version.
+Linked peerDependency "openclaw" -> /usr/lib/node_modules/openclaw
+Plugin manifest id "llama-cpp" differs from npm package name "@openclaw/llama-cpp-provider"; using manifest id as the config key.
+Installed plugin: llama-cpp
+Restart the gateway to load plugins.
+Pinned npm install record to @openclaw/llama-cpp-provider@2026.7.2-beta.7.
+[hostname]::~$ ps -fp $(pgrep -f '/usr/lib/node_modules/openclaw/dist/index.js gateway')
+UID          PID    PPID  C STIME TTY          TIME CMD
+[USER]  [PID_REDACTED] [PPID_REDACTED] 72 03:03 ? 00:00:34 /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+[hostname]::~$ openclaw gateway status --deep --require-rpc
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I'm not trapped in this container with you—you're trapped in here with me.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+CLI version: 2026.7.2-beta.7 (/usr/bin/openclaw)
+Gateway version: 2026.7.2-beta.7
+
+Runtime: running (pid 2889340, state active, sub running, last exit 0, reason 0)
+Read probe: ok
+Capability: connected-no-operator-scope
+
+Established clients: 3
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+If logs show protocol mismatch after rollback, stop stale OpenClaw client processes listed here and re-run gateway status.
+
+Listening: [::1]:18789, 127.0.0.1:18789
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ openclaw dashboard
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I'm not saying your workflow is chaotic... I'm just bringing a linter and a helmet.
+
+│
+◇  
+Dashboard URL: http://127.0.0.1:18789/
+Token auto-auth included in browser/clipboard URL.
+Copy to clipboard unavailable.
+Opened in your browser. Keep that tab to control OpenClaw.
+[hostname]::~$ openclaw gateway status --deep
+openclaw plugins inspect brave --runtime --json
+openclaw plugins inspect deepseek --runtime --json
+openclaw plugins inspect llama-cpp --runtime --json
+openclaw plugins inspect whatsapp --runtime --json
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Powered by whichever model is free this week.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+Runtime: running (pid 2893738, state active, sub running, last exit 0, reason 0)
+Warm-up: launch agents can take a few seconds. Try again shortly.
+Connectivity probe: failed
+Probe target: ws://127.0.0.1:18789
+  connect ECONNREFUSED 127.0.0.1:18789
+Capability: unknown
+
+Gateway port 18789 is not listening (service appears running).
+Logs: journalctl --user -u openclaw-gateway.service -n 200 --no-pager
+Restart log: ~/.openclaw/logs/gateway-restart.log
+
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "brave",
+    "name": "Brave Plugin",
+    "description": "Bundled Brave plugin",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/brave-plugin",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [],
+    "cliBackendIds": [],
+    "providerIds": [],
+    "embeddingProviderIds": [],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [
+      "brave"
+    ],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configUiHints": {
+      "webSearch.apiKey": {
+        "label": "Brave Search API Key",
+        "help": "Brave Search API key (fallback: BRAVE_API_KEY env var).",
+        "sensitive": true,
+        "placeholder": "BSA..."
+      },
+      "webSearch.mode": {
+        "label": "Brave Search Mode",
+        "help": "Brave Search mode: web or llm-context."
+      },
+      "webSearch.baseUrl": {
+        "label": "Brave Search Base URL",
+        "help": "Optional Brave-compatible API base URL for trusted proxies. Defaults to https://api.search.brave.com."
+      }
+    },
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "webSearch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "apiKey": {
+              "type": [
+                "string",
+                "object"
+              ]
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "web",
+                "llm-context"
+              ]
+            },
+            "baseUrl": {
+              "type": [
+                "string",
+                "object"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "contracts": {
+      "webSearchProviders": [
+        "brave"
+      ]
+    },
+    "imported": true,
+    "dependencyStatus": {
+      "hasDependencies": false,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": []
+    }
+  },
+  "shape": "plain-capability",
+  "capabilityMode": "plain",
+  "capabilityCount": 1,
+  "capabilities": [
+    {
+      "kind": "web-search",
+      "ids": [
+        "brave"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/brave-plugin@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-brave-plugin-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/brave-plugin",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/brave-plugin",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/brave-plugin@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T08:03:16.270Z",
+    "installedAt": "2026-08-13T08:03:19.363Z"
+  }
+}
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "deepseek",
+    "name": "DeepSeek Provider",
+    "description": "Bundled DeepSeek provider plugin",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/deepseek-provider",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-deepseek-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/deepseek-provider/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-deepseek-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/deepseek-provider",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [],
+    "cliBackendIds": [],
+    "providerIds": [
+      "deepseek"
+    ],
+    "embeddingProviderIds": [],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    },
+    "contracts": {
+      "usageProviders": [
+        "deepseek"
+      ]
+    },
+    "imported": true,
+    "dependencyStatus": {
+      "hasDependencies": false,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": []
+    }
+  },
+  "shape": "plain-capability",
+  "capabilityMode": "plain",
+  "capabilityCount": 1,
+  "capabilities": [
+    {
+      "kind": "text-inference",
+      "ids": [
+        "deepseek"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/deepseek-provider@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-deepseek-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/deepseek-provider",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/deepseek-provider",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/deepseek-provider@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T07:44:23.872Z",
+    "installedAt": "2026-08-13T07:44:27.284Z"
+  }
+}
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "llama-cpp",
+    "name": "llama.cpp Provider",
+    "description": "Local GGUF text inference and embeddings through node-llama-cpp",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/llama-cpp-provider",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [
+      "llama-cpp"
+    ],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [],
+    "cliBackendIds": [],
+    "providerIds": [
+      "llama-cpp"
+    ],
+    "embeddingProviderIds": [
+      "local"
+    ],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    },
+    "contracts": {
+      "embeddingProviders": [
+        "local"
+      ]
+    },
+    "imported": true,
+    "dependencyStatus": {
+      "hasDependencies": false,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": []
+    }
+  },
+  "shape": "hybrid-capability",
+  "capabilityMode": "hybrid",
+  "capabilityCount": 2,
+  "capabilities": [
+    {
+      "kind": "text-inference",
+      "ids": [
+        "llama-cpp"
+      ]
+    },
+    {
+      "kind": "embedding",
+      "ids": [
+        "local"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/llama-cpp-provider@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-llama-cpp-provider-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/llama-cpp-provider",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/llama-cpp-provider",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/llama-cpp-provider@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T08:03:31.475Z",
+    "installedAt": "2026-08-13T08:03:45.521Z"
+  }
+}
+{
+  "workspaceDir": "/home/[USER]/.openclaw/workspace",
+  "plugin": {
+    "id": "whatsapp",
+    "name": "WhatsApp",
+    "description": "WhatsApp channel plugin",
+    "packageVersion": "2026.7.2-beta.7",
+    "version": "2026.7.2-beta.7",
+    "builtWithOpenClawVersion": "2026.7.2-beta.7",
+    "packageName": "@openclaw/whatsapp",
+    "format": "openclaw",
+    "source": "/home/[USER]/.openclaw/npm/projects/openclaw-whatsapp-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/whatsapp/dist/index.js",
+    "rootDir": "/home/[USER]/.openclaw/npm/projects/openclaw-whatsapp-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/whatsapp",
+    "origin": "global",
+    "trustedOfficialInstall": true,
+    "enabled": true,
+    "compat": [],
+    "explicitlyEnabled": true,
+    "activated": true,
+    "activationSource": "explicit",
+    "activationReason": "enabled in config",
+    "syntheticAuthRefs": [],
+    "status": "loaded",
+    "toolNames": [],
+    "hookNames": [],
+    "channelIds": [
+      "whatsapp"
+    ],
+    "cliBackendIds": [],
+    "providerIds": [],
+    "embeddingProviderIds": [],
+    "speechProviderIds": [],
+    "realtimeTranscriptionProviderIds": [],
+    "realtimeVoiceProviderIds": [],
+    "mediaUnderstandingProviderIds": [],
+    "transcriptSourceProviderIds": [],
+    "imageGenerationProviderIds": [],
+    "videoGenerationProviderIds": [],
+    "musicGenerationProviderIds": [],
+    "webFetchProviderIds": [],
+    "webSearchProviderIds": [],
+    "migrationProviderIds": [],
+    "contextEngineIds": [],
+    "memoryEmbeddingProviderIds": [],
+    "agentHarnessIds": [],
+    "cliCommands": [],
+    "services": [],
+    "gatewayDiscoveryServiceIds": [],
+    "commands": [],
+    "httpRoutes": 0,
+    "hookCount": 0,
+    "configSchema": true,
+    "configJsonSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pluginHooks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "messageReceived": {
+              "type": "boolean",
+              "description": "Opt in to broadcasting inbound WhatsApp message_received hook payloads to loaded plugins."
+            }
+          }
+        }
+      }
+    },
+    "contracts": {
+      "tools": [
+        "whatsapp_call"
+      ]
+    },
+    "kind": "bundled-channel-entry",
+    "imported": true,
+    "dependencyStatus": {
+      "hasDependencies": false,
+      "installed": true,
+      "requiredInstalled": true,
+      "optionalInstalled": true,
+      "missing": [],
+      "missingOptional": [],
+      "dependencies": [],
+      "optionalDependencies": []
+    }
+  },
+  "shape": "plain-capability",
+  "capabilityMode": "plain",
+  "capabilityCount": 1,
+  "capabilities": [
+    {
+      "kind": "channel",
+      "ids": [
+        "whatsapp"
+      ]
+    }
+  ],
+  "typedHooks": [],
+  "customHooks": [],
+  "tools": [],
+  "commands": [],
+  "cliCommands": [],
+  "services": [],
+  "gatewayDiscoveryServices": [],
+  "gatewayMethods": [],
+  "mcpServers": [],
+  "lspServers": [],
+  "httpRouteCount": 0,
+  "bundleCapabilities": [],
+  "diagnostics": [],
+  "policy": {
+    "allowedModels": [],
+    "hasAllowedModelsConfig": false
+  },
+  "compatibility": [],
+  "install": {
+    "source": "npm",
+    "spec": "@openclaw/whatsapp@2026.7.2-beta.7",
+    "installPath": "/home/[USER]/.openclaw/npm/projects/openclaw-whatsapp-[INSTALL_ID_REDACTED]__openclaw-generation__g-[INSTALL_ID_REDACTED]/node_modules/@openclaw/whatsapp",
+    "version": "2026.7.2-beta.7",
+    "resolvedName": "@openclaw/whatsapp",
+    "resolvedVersion": "2026.7.2-beta.7",
+    "resolvedSpec": "@openclaw/whatsapp@2026.7.2-beta.7",
+    "integrity": "[NPM_INTEGRITY_REDACTED]",
+    "shasum": "[SHA_REDACTED]",
+    "resolvedAt": "2026-08-13T07:44:47.610Z",
+    "installedAt": "2026-08-13T07:45:00.417Z"
+  }
+}
+[hostname]::~$ openclaw gateway status --deep --require-rpc
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Ran git blame like you asked. It's you. It's always you.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+Runtime: running (pid 2895290, state active, sub running, last exit 0, reason 0)
+Gateway process is running and owns the gateway port, so this is not a warm-up delay. Check the probe credentials/config, or restart the gateway and inspect its logs if it stays unresponsive.
+Read probe: failed
+Probe target: ws://127.0.0.1:18789
+  gateway closed (1006 abnormal closure (no close frame)): no close reason
+  Gateway target: ws://127.0.0.1:18789
+  Source: cli --url
+  Config: /home/[USER]/.openclaw/openclaw.json
+  Possible causes:
+  - Connection dropped without a close frame (retry; check network and gateway load)
+  - Gateway not yet ready to accept connections (retry after a moment)
+  - TLS mismatch (connecting with ws:// to a wss:// gateway, or vice versa)
+  - Gateway process stopped or became unreachable (confirm it is still running)
+  Run `openclaw doctor` for diagnostics.
+
+Gateway port 18789 is not listening (service appears running).
+Logs: journalctl --user -u openclaw-gateway.service -n 200 --no-pager
+Restart log: ~/.openclaw/logs/gateway-restart.log
+
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ ss -ltnp | grep ':18789'
+LISTEN 0      511                      127.0.0.1:18789      0.0.0.0:*    users:(("node",pid=[PID_REDACTED],fd=40))     
+LISTEN 0      511                          [::1]:18789         [::]:*    users:(("node",pid=[PID_REDACTED],fd=41))     
+[hostname]::~$ curl -sS -o /dev/null -w 'HTTP %{http_code}\n' \
+http://127.0.0.1:18789/
+HTTP 200
+[hostname]::~$ journalctl --user -u openclaw-gateway.service \
+  --since "-10 min" --no-pager |
+grep -Ei 'unauthorized|token|pairing|scope|handshake|closed before connect|1006|1008|INVALID_REQUEST|error|fatal'
+Aug 13 03:08:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:08:57.474-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:11:15 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:11:15.167-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:14:53 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:14:53.266-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:16:19 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:16:19.459-05:00 [bundle-mcp] failed to start server "n8n" (npx -y @automatelab/n8n-mcp (cwd=/home/[USER]/.openclaw/extensions/n8n-mcp)): McpError: MCP error -32000: Connection closed
+Aug 13 03:16:39 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:16:39.085-05:00 [agent/embedded] embedded run failover decision: runId=[RUN_ID_REDACTED] stage=assistant decision=surface_error reason=none from=deepseek/deepseek-v4-flash profile=sha256:[HASH_REDACTED]
+Aug 13 03:16:39 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:16:39.235-05:00 [diagnostic] message processed: channel=cron chatId=unknown messageId=unknown sessionId=[SESSION_ID_REDACTED] sessionKey=agent:main:cron:[UUID_REDACTED]:run:[UUID_REDACTED] outcome=error duration=20966ms error="Gateway shutting down."
+Aug 13 03:17:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:17:01.030-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:17:38 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:17:38.556-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+[hostname]::~$ openclaw gateway probe --json
+{
+  "ok": false,
+  "degraded": false,
+  "capability": "unknown",
+  "ts": 1786609207345,
+  "durationMs": 266,
+  "timeoutMs": 3000,
+  "primaryTargetId": null,
+  "warnings": [
+    {
+      "code": "no_gateway_reachable",
+      "message": "No gateway answered any probe and Bonjour discovery returned no local gateways. Run `openclaw gateway status --deep --require-rpc` to inspect service state, config paths, listener owners, and logs; include `ss -ltnp` or `lsof -nP -iTCP:<port> -sTCP:LISTEN` for the configured port when filing a report.",
+      "targetIds": [
+        "localLoopback"
+      ]
+    }
+  ],
+  "network": {
+    "localLoopbackUrl": "ws://127.0.0.1:18789",
+    "localTailnetUrl": "ws://[TAILNET_IP]:18789",
+    "tailnetIPv4": "[TAILNET_IP]"
+  },
+  "discovery": {
+    "timeoutMs": 1200,
+    "count": 0,
+    "beacons": []
+  },
+  "targets": [
+    {
+      "id": "localLoopback",
+      "kind": "localLoopback",
+      "url": "ws://127.0.0.1:18789",
+      "active": true,
+      "tunnel": null,
+      "connect": {
+        "ok": false,
+        "rpcOk": false,
+        "scopeLimited": false,
+        "latencyMs": null,
+        "error": "connect ECONNREFUSED 127.0.0.1:18789",
+        "close": {
+          "code": 1006,
+          "reason": ""
+        }
+      },
+      "auth": {
+        "role": null,
+        "scopes": [],
+        "capability": "unknown"
+      },
+      "self": null,
+      "config": null,
+      "health": null,
+      "summary": null,
+      "presence": null
+    }
+  ]
+}
+[hostname]::~$ openclaw health --verbose
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — The lobster in your shell.
+
+│
+◇  
+Gateway connection:
+  Gateway target: ws://127.0.0.1:18789
+  Source: local loopback
+  Config: /home/[USER]/.openclaw/openclaw.json
+  Bind: loopback
+Telegram: configured
+WhatsApp: linked (auth age 0m)
+Gateway event loop: degraded reasons=event_loop_delay max=1353ms p99=44ms util=0.196 cpu=0.271
+Delivery queue: warning (dead-lettered entries — outbound: 4; oldest 1d ago)
+Gateway probe duration: 46ms
+Agents: main (default)
+Heartbeat interval: 30m (main)
+Session store (main): /home/[USER]/.openclaw/agents/main/sessions/sessions.json (10 entries)
+- agent:main:cron:[UUID_REDACTED] (5m ago)
+- agent:main:telegram:direct:[TELEGRAM_USER_ID] (14m ago)
+- agent:main:cron:[UUID_REDACTED] (24m ago)
+- agent:main:cron:[UUID_REDACTED] (81m ago)
+- agent:main:cron:[UUID_REDACTED] (1461m ago)
+[hostname]::~$ openclaw status --all
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — Sideways is a perfectly valid direction of progress—trust me, I'm a crustacean.
+
+│
+03:21:10 [plugins] exec-truncate failed during register from /home/[USER]/.openclaw/extensions/exec-truncate/dist/index.js: Error: hook registration missing name
+(node:2898362) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/[USER]/.openclaw/extensions/safeclaw/dist/kernel-client.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/[USER]/.openclaw/extensions/safeclaw/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+OpenClaw status --all
+
+Overview
+┌────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item               │ Value                                                                                                                                                             │
+├────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Version            │ 2026.7.2-beta.7                                                                                                                                                   │
+│ OS                 │ linux [KERNEL_REDACTED] (x64)                                                                                                                                      │
+│ Node               │ 22.23.2                                                                                                                                                           │
+│ Config             │ ~/.openclaw/openclaw.json                                                                                                                                         │
+│ Dashboard          │ http://127.0.0.1:18789/                                                                                                                                           │
+│ Tailscale exposure │ serve · unknown · [TAILNET_DOMAIN] · https://[TAILNET_DOMAIN]                                                     │
+│ Channel            │ beta (installed version)                                                                                                                                          │
+│ Update             │ pkg · npm beta update 2026.8.1-beta.1                                                                                                                             │
+│ Gateway            │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (connect ECONNREFUSED 127.0.0.1:18789)                                                                │
+│ Security           │ Run: openclaw security audit --deep                                                                                                                               │
+│ Gateway self       │ unknown                                                                                                                                                           │
+│ Gateway service    │ systemd user installed · enabled · running (pid 2898372, state active)                                                                                            │
+│ Node service       │ systemd user not installed                                                                                                                                        │
+│ Agents             │ 1 total · 0 bootstrapping · 1 active · 10 sessions                                                                                                                │
+│ Secrets            │ none                                                                                                                                                              │
+└────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Channels
+┌──────────┬─────────┬────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Channel  │ Enabled │ State  │ Detail                                                                                                                                                   │
+├──────────┼─────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Telegram │ ON      │ OK     │ token env ([CREDENTIAL_FINGERPRINT_REDACTED]) · accounts 1/1                                                                                                      │
+│ WhatsApp │ ON      │ OK     │ configured · accounts 1/1                                                                                                                                │
+└──────────┴─────────┴────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Telegram accounts
+┌──────────┬──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Account  │ Status   │ Notes                                                                                                                                                            │
+├──────────┼──────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ default  │ OK       │ token:[CREDENTIAL_REDACTED]                                                                                                                                                        │
+└──────────┴──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+WhatsApp accounts
+┌──────────┬──────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Account  │ Status   │ Notes                                                                                                                                                            │
+├──────────┼──────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ default  │ OK       │ dm:allowlist · allow:[WHATSAPP_ALLOWED_DM_1] (id: [WHATSAPP_ALLOWED_DM_1]),[WHATSAPP_ALLOWED_DM_2] (id: [WHATSAPP_ALLOWED_DM_2])                                                                         │
+└──────────┴──────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Agents
+┌────────────┬────────────────┬──────────┬──────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Agent      │ Bootstrap file │ Sessions │ Active   │ Store                                                                                                                              │
+├────────────┼────────────────┼──────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ main       │ ABSENT         │       10 │ 5m ago   │ ~/.openclaw/agents/main/sessions/sessions.json                                                                                     │
+└────────────┴────────────────┴──────────┴──────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Diagnosis (read-only)
+
+Gateway connection details:
+  Gateway target: ws://127.0.0.1:18789
+  Source: local loopback
+  Config: /home/[USER]/.openclaw/openclaw.json
+  Bind: loopback
+
+✓ Config: /home/[USER]/.openclaw/openclaw.json
+✓ Secret diagnostics (0)
+✓ Restart sentinel: none
+✓ Port 18789
+! Tailscale exposure: serve · daemon unknown · [TAILNET_DOMAIN]
+  https: https://[TAILNET_DOMAIN]
+✓ Skills: 24 eligible · 0 missing · /home/[USER]/.openclaw/workspace
+! Plugin compatibility (3)
+  - [info] thread-ownership is hook-only. This remains a supported compatibility path, but it has not migrated to explicit capability registration yet.
+  - [info] cron-semaphore is hook-only. This remains a supported compatibility path, but it has not migrated to explicit capability registration yet.
+  - [info] obsidian-media-claim is hook-only. This remains a supported compatibility path, but it has not migrated to explicit capability registration yet.
+✓ Agent activity: 1 active in 30m · 10 sessions
+
+Gateway restart attempts (tail): /home/[USER]/.openclaw/logs/gateway-restart.log
+  [2026-08-10T10:52:49Z] openclaw restart attempt source=update target=openclaw-gateway.service
+  [2026-08-10T10:52:49Z] openclaw restart done source=update
+  [2026-08-10T11:28:12Z] openclaw restart attempt source=update target=openclaw-gateway.service
+  [2026-08-10T11:28:13Z] openclaw restart done source=update
+  [2026-08-10T11:30:47Z] openclaw restart attempt source=update target=openclaw-gateway.service
+  … 3 lines omitted …
+  [2026-08-11T08:55:02Z] openclaw restart attempt source=update target=openclaw-gateway.service
+  [2026-08-11T08:55:03Z] openclaw restart done source=update
+  [2026-08-12T04:57:10.856Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-12T04:57:26.916Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:11:06.932Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:12:47.989Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:17:06.166Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:28:27.945Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:29:10.847Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+  [2026-08-13T07:52:19.463Z] openclaw gateway lifecycle source=cli action=restart mode=service-repair pid=[PID_REDACTED] interactive=1
+! Channel issues skipped (gateway unreachable)
+
+Gateway health:
+  connect ECONNREFUSED 127.0.0.1:18789
+
+Pasteable debug report. Auth tokens redacted.
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+
+◇  
+[hostname]::~$ systemctl --user show openclaw-gateway.service \
+  -p NRestarts \
+  -p ExecMainPID \
+  -p ExecMainStartTimestamp \
+  -p ActiveState \
+  -p SubState \
+  -p Result
+Result=success
+NRestarts=0
+ExecMainStartTimestamp=Thu 2026-08-13 03:23:44 CDT
+ExecMainPID=[PID_REDACTED]
+ActiveState=active
+SubState=running
+[hostname]::~$ journalctl --user -u openclaw-gateway.service \
+  --since "-15 min" --no-pager | tail -n 250
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.801-05:00 [ws] ⇄ res ✓ taskSuggestions.list 456ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.808-05:00 [ws] ⇄ res ✓ board.get 462ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.813-05:00 [ws] ⇄ res ✓ board.get 468ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.819-05:00 [ws] ⇄ res ✓ board.get 473ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.823-05:00 [ws] ⇄ res ✓ board.get 478ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.828-05:00 [ws] ⇄ res ✓ board.get 483ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.833-05:00 [ws] ⇄ res ✓ board.get 487ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.889-05:00 [ws] ⇄ res ✓ agent.identity.get 539ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:16 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:16.894-05:00 [ws] ⇄ res ✓ agent.identity.get 548ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.260-05:00 [ws] ⇄ res ✓ models.authStatus 915ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.278-05:00 [ws] ⇄ res ✓ models.authStatus 932ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.304-05:00 [ws] ⇄ res ✓ cron.list 959ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.443-05:00 [ws] ⇄ res ✓ chat.startup 1098ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.482-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.519-05:00 [ws] ⇄ res ✓ sessions.list 1172ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.706-05:00 [ws] ⇄ res ✓ sessions.companion.state 90ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:17 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:17.710-05:00 [ws] ⇄ res ✓ session.discussion.info 96ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:21:18 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:18.058-05:00 [telegram] [diag] isolated polling ingress started spool=/home/[USER]/.openclaw/telegram/ingress-spool-default
+Aug 13 03:21:18 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:18.748-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:21:19 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:19.207-05:00 [whatsapp] Listening for WhatsApp inbound messages (DM + groups disabled by groupPolicy).
+Aug 13 03:21:19 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:19.566-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:21:49 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:49.410-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:21:52 [HOSTNAME] systemd[PID_REDACTED]: Stopping openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7)...
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.029-05:00 [admission] closed: restart drain
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.036-05:00 [gateway] received SIGTERM; shutting down
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.852-05:00 [gmail-watcher] gmail watcher stopped
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.874-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.880-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:21:52 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:52.914-05:00 [shutdown] completed cleanly in 731ms
+Aug 13 03:21:54 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:21:54 [HOSTNAME] systemd[PID_REDACTED]: openclaw-gateway.service: Consumed 39.069s CPU time, 460.0M memory peak, 0B memory swap peak.
+Aug 13 03:21:54 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:21:56 [HOSTNAME] node[PID_REDACTED]: (node:2898914) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+Aug 13 03:21:56 [HOSTNAME] node[PID_REDACTED]: (Use `node --trace-warnings ...` to show where the warning was created)
+Aug 13 03:21:58 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:58.084-05:00 [gateway] loading configuration…
+Aug 13 03:21:58 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:58.223-05:00 [gateway] resolving authentication…
+Aug 13 03:21:58 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:21:58.239-05:00 [gateway] starting...
+Aug 13 03:22:04 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:04.192-05:00 [gateway] starting HTTP server...
+Aug 13 03:22:04 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:04.590-05:00 [health-monitor] started (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.412-05:00 [gateway] [plugins] typed hook "before_agent_run" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.416-05:00 [gateway] [plugins] typed hook "agent_end" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.565-05:00 [gateway] agent model: deepseek/deepseek-v4-flash (thinking=medium, fast=auto)
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.569-05:00 [gateway] http server listening (25 plugins: active-memory, anthropic, bonjour, brave, browser, canvas, cron-semaphore, device-pair, file-transfer, linux-canvas, linux-node, memory-core, memory-wiki, ollama, opencode, openrouter, policy, talk-voice, teams-meetings, telegram, thread-ownership, webhooks, whatsapp, workboard, zoom-meetings; 5.2s)
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.573-05:00 [gateway] log file: /tmp/openclaw/openclaw-2026-08-13.log
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.601-05:00 [gateway] starting channels and sidecars...
+Aug 13 03:22:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:06.764-05:00 [hooks] loaded 1 internal hook handler
+Aug 13 03:22:06 [HOSTNAME] sudo[PID_REDACTED]:  [USER] : PWD=/home/[USER] ; USER=root ; COMMAND=/usr/bin/tailscale serve --bg --yes 18789
+Aug 13 03:22:06 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session opened for user root(uid=0) by [USER](uid=1000)
+Aug 13 03:22:06 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session closed for user root
+Aug 13 03:22:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:07.666-05:00 [whatsapp] [default] starting provider ([dev1])
+Aug 13 03:22:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:07.738-05:00 [tailscale] serve enabled: https://[TAILNET_DOMAIN]/ (WS via wss://[TAILNET_DOMAIN])
+Aug 13 03:22:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:07.769-05:00 [gateway] startup outcomes: internal-hooks=loaded; internal-startup-hook=scheduled; gateway-start-hooks=scheduled; memory-qmd=skipped (not-configured); gmail-watcher=skipped (hooks-disabled); gmail-model=skipped (not-configured)
+Aug 13 03:22:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:07.772-05:00 [gateway] ready
+Aug 13 03:22:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:07.907-05:00 [heartbeat] started
+Aug 13 03:22:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:08.875-05:00 [gateway] agent runtime plugins pre-warmed in 234ms
+Aug 13 03:22:09 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:09.762-05:00 [telegram] [default] starting provider ([TELEGRAM_BOT_HANDLE])
+Aug 13 03:22:10 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:10.136-05:00 [telegram] menu text exceeded the conservative 5700-character payload budget; shortening descriptions to keep 96 commands visible.
+Aug 13 03:22:10 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:10.258-05:00 [plugins] bonjour: gateway name conflict resolved; newName="[HOSTNAME] (OpenClaw) (2)"
+Aug 13 03:22:10 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:10.261-05:00 [plugins] bonjour: gateway hostname conflict resolved; newHostname="[HOSTNAME]-(2)"
+Aug 13 03:22:10 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:10.266-05:00 [plugins] bonjour: advertised gateway fqdn=[HOSTNAME] (OpenClaw) (2)._openclaw-gw._tcp.local. host=[HOSTNAME]-(2).local. port=18789 state=announcing
+Aug 13 03:22:10 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:10.747-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.148-05:00 [ws] ⇄ res ✓ workboard.boards.list 319ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.617-05:00 [ws] ⇄ res ✓ controlUi.sessionPullRequests.subscribe 792ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.627-05:00 [ws] ⇄ res ✓ sessions.observer.visibility 804ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.634-05:00 [ws] ⇄ res ✓ tasks.list 809ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.653-05:00 [ws] ⇄ res ✓ tasks.list 828ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.658-05:00 [ws] ⇄ res ✓ question.list 836ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.663-05:00 [ws] ⇄ res ✓ question.list 839ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.670-05:00 [ws] ⇄ res ✓ board.get 846ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.675-05:00 [ws] ⇄ res ✓ board.get 852ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.681-05:00 [ws] ⇄ res ✓ board.get 856ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.685-05:00 [ws] ⇄ res ✓ board.get 861ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.694-05:00 [ws] ⇄ res ✓ board.get 866ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.699-05:00 [ws] ⇄ res ✓ board.get 874ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.703-05:00 [ws] ⇄ res ✓ sessions.subscribe 881ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.707-05:00 [ws] ⇄ res ✓ sessions.viewers.set 883ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.713-05:00 [ws] ⇄ res ✓ sessions.messages.subscribe 888ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.718-05:00 [ws] ⇄ res ✓ taskSuggestions.list 894ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.721-05:00 [ws] ⇄ res ✓ openclaw.approval.list 899ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.728-05:00 [ws] ⇄ res ✓ agent.identity.get 905ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:11 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:11.733-05:00 [ws] ⇄ res ✓ agent.identity.get 909ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.040-05:00 [ws] ⇄ res ✓ models.authStatus 1216ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.052-05:00 [ws] ⇄ res ✓ models.authStatus 1229ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.203-05:00 [ws] ⇄ res ✓ cron.list 1381ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.341-05:00 [ws] ⇄ res ✓ chat.startup 1517ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.373-05:00 [telegram] [diag] isolated polling ingress started spool=/home/[USER]/.openclaw/telegram/ingress-spool-default
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.574-05:00 [ws] ⇄ res ✓ sessions.list 223ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.695-05:00 [ws] ⇄ res ✓ sessions.companion.state 116ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.699-05:00 [ws] ⇄ res ✓ session.discussion.info 120ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.782-05:00 [ws] ⇄ res ✓ commands.list 204ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:22:12 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:12.793-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:22:13 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:13.069-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:22:14 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:14.152-05:00 [whatsapp] Listening for WhatsApp inbound messages (DM + groups disabled by groupPolicy).
+Aug 13 03:22:43 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:43.714-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:22:47 [HOSTNAME] systemd[PID_REDACTED]: Stopping openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7)...
+Aug 13 03:22:47 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:47.028-05:00 [admission] closed: restart drain
+Aug 13 03:22:47 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:47.032-05:00 [gateway] received SIGTERM; shutting down
+Aug 13 03:22:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:48.109-05:00 [gmail-watcher] gmail watcher stopped
+Aug 13 03:22:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:48.133-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:22:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:48.140-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:22:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:48.174-05:00 [shutdown] completed cleanly in 984ms
+Aug 13 03:22:49 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:22:49 [HOSTNAME] systemd[PID_REDACTED]: openclaw-gateway.service: Consumed 40.175s CPU time.
+Aug 13 03:22:49 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:22:51 [HOSTNAME] node[PID_REDACTED]: (node:2899413) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+Aug 13 03:22:51 [HOSTNAME] node[PID_REDACTED]: (Use `node --trace-warnings ...` to show where the warning was created)
+Aug 13 03:22:53 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:53.680-05:00 [gateway] loading configuration…
+Aug 13 03:22:53 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:53.823-05:00 [gateway] resolving authentication…
+Aug 13 03:22:53 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:22:53.840-05:00 [gateway] starting...
+Aug 13 03:23:00 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:00.078-05:00 [gateway] starting HTTP server...
+Aug 13 03:23:00 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:00.489-05:00 [health-monitor] started (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.438-05:00 [gateway] [plugins] typed hook "before_agent_run" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.441-05:00 [gateway] [plugins] typed hook "agent_end" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.580-05:00 [gateway] agent model: deepseek/deepseek-v4-flash (thinking=medium, fast=auto)
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.584-05:00 [gateway] http server listening (25 plugins: active-memory, anthropic, bonjour, brave, browser, canvas, cron-semaphore, device-pair, file-transfer, linux-canvas, linux-node, memory-core, memory-wiki, ollama, opencode, openrouter, policy, talk-voice, teams-meetings, telegram, thread-ownership, webhooks, whatsapp, workboard, zoom-meetings; 5.5s)
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.587-05:00 [gateway] log file: /tmp/openclaw/openclaw-2026-08-13.log
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.615-05:00 [gateway] starting channels and sidecars...
+Aug 13 03:23:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:02.762-05:00 [hooks] loaded 1 internal hook handler
+Aug 13 03:23:02 [HOSTNAME] sudo[PID_REDACTED]:  [USER] : PWD=/home/[USER] ; USER=root ; COMMAND=/usr/bin/tailscale serve --bg --yes 18789
+Aug 13 03:23:02 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session opened for user root(uid=0) by [USER](uid=1000)
+Aug 13 03:23:02 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session closed for user root
+Aug 13 03:23:03 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:03.573-05:00 [whatsapp] [default] starting provider ([dev1])
+Aug 13 03:23:03 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:03.719-05:00 [gateway] startup outcomes: internal-hooks=loaded; internal-startup-hook=scheduled; gateway-start-hooks=scheduled; memory-qmd=skipped (not-configured); gmail-watcher=skipped (hooks-disabled); gmail-model=skipped (not-configured)
+Aug 13 03:23:03 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:03.729-05:00 [gateway] ready
+Aug 13 03:23:04 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:04.481-05:00 [gateway] agent runtime plugins pre-warmed in 148ms
+Aug 13 03:23:04 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:04.493-05:00 [tailscale] serve enabled: https://[TAILNET_DOMAIN]/ (WS via wss://[TAILNET_DOMAIN])
+Aug 13 03:23:04 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:04.602-05:00 [heartbeat] started
+Aug 13 03:23:05 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:05.421-05:00 [telegram] [default] starting provider ([TELEGRAM_BOT_HANDLE])
+Aug 13 03:23:05 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:05.785-05:00 [telegram] menu text exceeded the conservative 5700-character payload budget; shortening descriptions to keep 96 commands visible.
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.275-05:00 [plugins] bonjour: gateway name conflict resolved; newName="[HOSTNAME] (OpenClaw) (2)"
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.278-05:00 [plugins] bonjour: gateway hostname conflict resolved; newHostname="[HOSTNAME]-(2)"
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.283-05:00 [plugins] bonjour: advertised gateway fqdn=[HOSTNAME] (OpenClaw) (2)._openclaw-gw._tcp.local. host=[HOSTNAME]-(2).local. port=18789 state=announcing
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.311-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.596-05:00 [ws] ⇄ res ✓ workboard.boards.list 224ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.814-05:00 [ws] ⇄ res ✓ sessions.observer.visibility 443ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.822-05:00 [ws] ⇄ res ✓ push.web.subscribe 450ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.829-05:00 [ws] ⇄ res ✓ sessions.subscribe 458ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.834-05:00 [ws] ⇄ res ✓ openclaw.approval.list 463ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:06 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:06.878-05:00 [ws] ⇄ res ✓ agents.list 508ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.055-05:00 [ws] ⇄ res ✓ sessions.list 161ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.070-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.186-05:00 [ws] ⇄ res ✓ workboard.boards.list 98ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.439-05:00 [ws] ⇄ res ✓ question.list 350ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.443-05:00 [ws] ⇄ res ✓ question.list 353ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.447-05:00 [ws] ⇄ res ✓ taskSuggestions.list 358ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.453-05:00 [ws] ⇄ res ✓ board.get 364ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.457-05:00 [ws] ⇄ res ✓ board.get 368ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.462-05:00 [ws] ⇄ res ✓ board.get 372ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.466-05:00 [ws] ⇄ res ✓ board.get 376ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.470-05:00 [ws] ⇄ res ✓ board.get 380ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.522-05:00 [ws] ⇄ res ✓ agent.identity.get 433ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.526-05:00 [ws] ⇄ res ✓ agent.identity.get 437ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.939-05:00 [ws] ⇄ res ✓ models.authStatus 848ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.953-05:00 [ws] ⇄ res ✓ models.authStatus 863ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:07 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:07.981-05:00 [ws] ⇄ res ✓ cron.list 892ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.112-05:00 [ws] ⇄ res ✓ chat.startup 1021ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.200-05:00 [ws] ⇄ res ✓ tasks.list 52ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.222-05:00 [ws] ⇄ res ✓ tasks.list 74ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.239-05:00 [telegram] [diag] isolated polling ingress started spool=/home/[USER]/.openclaw/telegram/ingress-spool-default
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.310-05:00 [ws] ⇄ res ✓ sessions.list 163ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.420-05:00 [ws] ⇄ res ✓ sessions.companion.state 104ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.424-05:00 [ws] ⇄ res ✓ session.discussion.info 109ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:23:08 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:08.928-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:23:09 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:09.198-05:00 [whatsapp] Listening for WhatsApp inbound messages (DM + groups disabled by groupPolicy).
+Aug 13 03:23:39 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:39.580-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:23:42 [HOSTNAME] systemd[PID_REDACTED]: Stopping openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7)...
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.024-05:00 [admission] closed: restart drain
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.028-05:00 [gateway] received SIGTERM; shutting down
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.854-05:00 [gmail-watcher] gmail watcher stopped
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.882-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.887-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:23:42 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:42.919-05:00 [shutdown] completed cleanly in 765ms
+Aug 13 03:23:44 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:23:44 [HOSTNAME] systemd[PID_REDACTED]: openclaw-gateway.service: Consumed 39.169s CPU time.
+Aug 13 03:23:44 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:23:46 [HOSTNAME] node[PID_REDACTED]: (node:2899889) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+Aug 13 03:23:46 [HOSTNAME] node[PID_REDACTED]: (Use `node --trace-warnings ...` to show where the warning was created)
+Aug 13 03:23:47 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:47.966-05:00 [gateway] loading configuration…
+Aug 13 03:23:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:48.122-05:00 [gateway] resolving authentication…
+Aug 13 03:23:48 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:48.138-05:00 [gateway] starting...
+Aug 13 03:23:53 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:53.826-05:00 [gateway] starting HTTP server...
+Aug 13 03:23:54 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:54.215-05:00 [health-monitor] started (interval: 300s, startup-grace: 60s, channel-connect-grace: 120s)
+Aug 13 03:23:55 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:55.954-05:00 [gateway] [plugins] typed hook "before_agent_run" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:23:55 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:55.958-05:00 [gateway] [plugins] typed hook "agent_end" blocked because non-bundled plugins must set plugins.entries.cron-semaphore.hooks.allowConversationAccess=true (plugin=cron-semaphore, source=/home/[USER]/.openclaw/extensions/cron-semaphore/index.js)
+Aug 13 03:23:56 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:56.087-05:00 [gateway] agent model: deepseek/deepseek-v4-flash (thinking=medium, fast=auto)
+Aug 13 03:23:56 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:56.091-05:00 [gateway] http server listening (25 plugins: active-memory, anthropic, bonjour, brave, browser, canvas, cron-semaphore, device-pair, file-transfer, linux-canvas, linux-node, memory-core, memory-wiki, ollama, opencode, openrouter, policy, talk-voice, teams-meetings, telegram, thread-ownership, webhooks, whatsapp, workboard, zoom-meetings; 4.9s)
+Aug 13 03:23:56 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:56.094-05:00 [gateway] log file: /tmp/openclaw/openclaw-2026-08-13.log
+Aug 13 03:23:56 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:56.119-05:00 [gateway] starting channels and sidecars...
+Aug 13 03:23:56 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:56.254-05:00 [hooks] loaded 1 internal hook handler
+Aug 13 03:23:56 [HOSTNAME] sudo[PID_REDACTED]:  [USER] : PWD=/home/[USER] ; USER=root ; COMMAND=/usr/bin/tailscale serve --bg --yes 18789
+Aug 13 03:23:56 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session opened for user root(uid=0) by [USER](uid=1000)
+Aug 13 03:23:56 [HOSTNAME] sudo[PID_REDACTED]: pam_unix(sudo:session): session closed for user root
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.056-05:00 [whatsapp] [default] starting provider ([dev1])
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.182-05:00 [gateway] startup outcomes: internal-hooks=loaded; internal-startup-hook=scheduled; gateway-start-hooks=scheduled; memory-qmd=skipped (not-configured); gmail-watcher=skipped (hooks-disabled); gmail-model=skipped (not-configured)
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.185-05:00 [gateway] ready
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.864-05:00 [gateway] agent runtime plugins pre-warmed in 123ms
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.888-05:00 [tailscale] serve enabled: https://[TAILNET_DOMAIN]/ (WS via wss://[TAILNET_DOMAIN])
+Aug 13 03:23:57 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:57.982-05:00 [heartbeat] started
+Aug 13 03:23:58 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:58.803-05:00 [telegram] [default] starting provider ([TELEGRAM_BOT_HANDLE])
+Aug 13 03:23:59 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:59.145-05:00 [telegram] menu text exceeded the conservative 5700-character payload budget; shortening descriptions to keep 96 commands visible.
+Aug 13 03:23:59 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:59.292-05:00 [plugins] bonjour: gateway name conflict resolved; newName="[HOSTNAME] (OpenClaw) (2)"
+Aug 13 03:23:59 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:59.295-05:00 [plugins] bonjour: gateway hostname conflict resolved; newHostname="[HOSTNAME]-(2)"
+Aug 13 03:23:59 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:23:59.303-05:00 [plugins] bonjour: advertised gateway fqdn=[HOSTNAME] (OpenClaw) (2)._openclaw-gw._tcp.local. host=[HOSTNAME]-(2).local. port=18789 state=announcing
+Aug 13 03:24:00 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:00.175-05:00 [telegram] [diag] isolated polling ingress started spool=/home/[USER]/.openclaw/telegram/ingress-spool-default
+Aug 13 03:24:00 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:00.757-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.066-05:00 [ws] ⇄ res ✓ workboard.boards.list 281ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.459-05:00 [ws] ⇄ res ✓ sessions.observer.visibility 677ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.464-05:00 [ws] ⇄ res ✓ question.list 681ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.468-05:00 [ws] ⇄ res ✓ question.list 685ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.475-05:00 [ws] ⇄ res ✓ board.get 691ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.481-05:00 [ws] ⇄ res ✓ board.get 696ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.486-05:00 [ws] ⇄ res ✓ board.get 702ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.491-05:00 [ws] ⇄ res ✓ board.get 707ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.497-05:00 [ws] ⇄ res ✓ board.get 712ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.501-05:00 [ws] ⇄ res ✓ sessions.subscribe 719ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.506-05:00 [ws] ⇄ res ✓ taskSuggestions.list 721ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.510-05:00 [ws] ⇄ res ✓ openclaw.approval.list 727ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.517-05:00 [ws] ⇄ res ✓ agent.identity.get 732ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.522-05:00 [ws] ⇄ res ✓ agent.identity.get 737ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.794-05:00 [ws] ⇄ res ✓ models.authStatus 1010ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.809-05:00 [ws] ⇄ res ✓ models.authStatus 1024ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:01 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:01.957-05:00 [ws] ⇄ res ✓ cron.list 1173ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.084-05:00 [ws] ⇄ res ✓ chat.startup 1300ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.088-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.150-05:00 [ws] ⇄ res ✓ tasks.list 50ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.166-05:00 [ws] ⇄ res ✓ tasks.list 67ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.172-05:00 [ws] ⇄ res ✓ push.web.subscribe 72ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.211-05:00 [ws] ⇄ res ✓ sessions.list 111ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.339-05:00 [ws] ⇄ res ✓ sessions.companion.state 105ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.344-05:00 [ws] ⇄ res ✓ session.discussion.info 109ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.435-05:00 [ws] ⇄ res ✓ commands.list 200ms conn=[CONNECTION_ID_REDACTED] id=[REQUEST_ID_REDACTED]
+Aug 13 03:24:02 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:02.446-05:00 [ws] webchat connected conn=[CONNECTION_ID_REDACTED] remote=127.0.0.1 client=openclaw-control-ui webchat v2026.7.2-beta.7
+Aug 13 03:24:03 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:03.148-05:00 [whatsapp] Listening for WhatsApp inbound messages (DM + groups disabled by groupPolicy).
+Aug 13 03:24:03 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:03.564-05:00 [whatsapp] Failed hydrating participating groups on connect: Error: rate-overlimit
+Aug 13 03:24:31 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:31.497-05:00 [telegram] [diag] isolated polling worker poll-start offset=555010948
+Aug 13 03:24:37 [HOSTNAME] systemd[PID_REDACTED]: Stopping openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7)...
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.025-05:00 [admission] closed: restart drain
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.033-05:00 [gateway] received SIGTERM; shutting down
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.868-05:00 [gmail-watcher] gmail watcher stopped
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.891-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.899-05:00 [ws] webchat disconnected code=1012 reason=service restart conn=[CONNECTION_ID_REDACTED]
+Aug 13 03:24:37 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:37.939-05:00 [shutdown] completed cleanly in 773ms
+Aug 13 03:24:39 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:24:39 [HOSTNAME] systemd[PID_REDACTED]: openclaw-gateway.service: Consumed 37.982s CPU time, 824.3M memory peak, 0B memory swap peak.
+Aug 13 03:24:39 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-gateway.service - OpenClaw Gateway (v2026.7.2-beta.7).
+Aug 13 03:24:41 [HOSTNAME] node[PID_REDACTED]: (node:2900370) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+Aug 13 03:24:41 [HOSTNAME] node[PID_REDACTED]: (Use `node --trace-warnings ...` to show where the warning was created)
+Aug 13 03:24:43 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:43.179-05:00 [gateway] loading configuration…
+Aug 13 03:24:43 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:43.336-05:00 [gateway] resolving authentication…
+Aug 13 03:24:43 [HOSTNAME] node[PID_REDACTED]: 2026-08-13T03:24:43.364-05:00 [gateway] starting...
+[hostname]::~$ systemctl --user list-timers --all
+NEXT                            LEFT LAST                              PASSED UNIT                                          ACTIVATES                                      
+Thu 2026-08-13 03:29:07 CDT      35s Thu 2026-08-13 03:28:16 CDT      14s ago openclaw-wa-healthcheck.timer                 openclaw-wa-healthcheck.service
+Thu 2026-08-13 06:00:00 CDT 2h 31min Thu 2026-08-13 03:00:22 CDT    28min ago snap.firmware-updater.firmware-notifier.timer snap.firmware-updater.firmware-notifier.service
+Fri 2026-08-14 00:38:51 CDT      21h Thu 2026-08-13 00:38:51 CDT 2h 49min ago launchpadlib-cache-clean.timer                launchpadlib-cache-clean.service
+
+3 timers listed.
+[hostname]::~$ systemctl --user show openclaw-gateway.service \
+  -p Restart \
+  -p RestartUSec \
+  -p RuntimeMaxUSec \
+  -p TimeoutStopUSec
+Restart=always
+RestartUSec=5s
+TimeoutStopUSec=30s
+RuntimeMaxUSec=infinity
+[hostname]::~$ tail -n 100 ~/.openclaw/logs/gateway-restart.log
+[2026-08-10T10:52:49Z] openclaw restart attempt source=update target=openclaw-gateway.service
+[2026-08-10T10:52:49Z] openclaw restart done source=update
+[2026-08-10T11:28:12Z] openclaw restart attempt source=update target=openclaw-gateway.service
+[2026-08-10T11:28:13Z] openclaw restart done source=update
+[2026-08-10T11:30:47Z] openclaw restart attempt source=update target=openclaw-gateway.service
+[2026-08-10T11:30:48Z] openclaw restart done source=update
+[2026-08-10T18:12:40Z] openclaw restart attempt source=update target=openclaw-gateway.service
+[2026-08-10T18:12:40Z] openclaw restart done source=update
+[2026-08-11T08:55:02Z] openclaw restart attempt source=update target=openclaw-gateway.service
+[2026-08-11T08:55:03Z] openclaw restart done source=update
+[2026-08-12T04:57:10.856Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-12T04:57:26.916Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:11:06.932Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:12:47.989Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:17:06.166Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:28:27.945Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:29:10.847Z] openclaw gateway lifecycle source=cli action=restart mode=systemctl-restart interactive=1
+[2026-08-13T07:52:19.463Z] openclaw gateway lifecycle source=cli action=restart mode=service-repair pid=[PID_REDACTED] interactive=1
+[hostname]::~$ systemctl --user cat openclaw-wa-healthcheck.timer
+# /home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.timer
+[Unit]
+Description=Run OpenClaw WhatsApp health check every 50 seconds
+# Only start checking once the gateway is up
+After=openclaw-gateway.service
+Wants=openclaw-wa-healthcheck.service
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=50
+AccuracySec=5s
+Unit=openclaw-wa-healthcheck.service
+
+[Install]
+WantedBy=timers.target
+[hostname]::~$ systemctl --user cat openclaw-wa-healthcheck.service
+# /home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.service
+[Unit]
+Description=OpenClaw WhatsApp bridge health-check service
+Wants=openclaw-wa-healthcheck.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/[USER]/.local/bin/openclaw-wa-healthcheck.sh
+# If a check hangs, kill it so the next tick isn't blocked
+TimeoutStartSec=40
+# Environment so the script can reach the gateway + systemd
+Environment=HOME=/home/[USER]
+Environment=PATH=/usr/bin:/usr/local/bin:/bin:/home/[USER]/.npm-global/bin
+
+[Install]
+WantedBy=default.target
+[hostname]::~$ journalctl --user -u openclaw-wa-healthcheck.service \
+  --since "-15 min" --no-pager
+Aug 13 03:17:16 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:17:17 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:17:19 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:18:12 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:18:14 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:19:07 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:19:09 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:20:02 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:20:04 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:20:56 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:20:57 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:20:59 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:21:51 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:21:54 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:22:46 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:22:49 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:23:41 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:23:44 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:24:36 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:24:37 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:24:39 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:25:31 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:25:34 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:26:27 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:26:27 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:26:29 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:27:21 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:27:22 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:27:24 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:28:17 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:28:19 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:29:12 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:29:12 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:29:14 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:30:06 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:30:09 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+Aug 13 03:30:58 [HOSTNAME] systemd[PID_REDACTED]: Starting openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service...
+Aug 13 03:31:00 [HOSTNAME] systemd[PID_REDACTED]: Finished openclaw-wa-healthcheck.service - OpenClaw WhatsApp bridge health-check service.
+[hostname]::~$ systemctl --user stop openclaw-wa-healthcheck.timer
+[hostname]::~$ systemctl --user disable openclaw-wa-healthcheck.timer
+Removed "/home/[USER]/.config/systemd/user/timers.target.wants/openclaw-wa-healthcheck.timer".
+[hostname]::~$ systemctl --user status openclaw-wa-healthcheck.timer
+○ openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds
+     Loaded: loaded (/home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.timer; disabled; preset: enabled)
+     Active: inactive (dead)
+    Trigger: n/a
+   Triggers: ● openclaw-wa-healthcheck.service
+
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found ordering cycle on timers.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-wa-healthcheck.timer/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-gateway.service/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on basic.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Job timers.target/start deleted to break ordering cycle starting with basic.target/start
+Aug 10 00:33:19 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+Aug 13 03:33:29 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+[hostname]::~$ systemctl --user status openclaw-wa-healthcheck.timer
+○ openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds
+     Loaded: loaded (/home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.timer; disabled; preset: enabled)
+     Active: inactive (dead)
+    Trigger: n/a
+   Triggers: ● openclaw-wa-healthcheck.service
+
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found ordering cycle on timers.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-wa-healthcheck.timer/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-gateway.service/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on basic.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Job timers.target/start deleted to break ordering cycle starting with basic.target/start
+Aug 10 00:33:19 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+Aug 13 03:33:29 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+[hostname]::~$ systemctl --user status openclaw-wa-healthcheck.timer
+○ openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds
+     Loaded: loaded (/home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.timer; disabled; preset: enabled)
+     Active: inactive (dead)
+    Trigger: n/a
+   Triggers: ● openclaw-wa-healthcheck.service
+
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found ordering cycle on timers.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-wa-healthcheck.timer/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on openclaw-gateway.service/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Found dependency on basic.target/start
+Aug 10 00:33:18 [HOSTNAME] systemd[PID_REDACTED]: basic.target: Job timers.target/start deleted to break ordering cycle starting with basic.target/start
+Aug 10 00:33:19 [HOSTNAME] systemd[PID_REDACTED]: Started openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+Aug 13 03:33:29 [HOSTNAME] systemd[PID_REDACTED]: Stopped openclaw-wa-healthcheck.timer - Run OpenClaw WhatsApp health check every 50 seconds.
+[hostname]::~$ openclaw gateway restart
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I'll do the boring stuff while you dramatically stare at the logs like it's cinema.
+
+Restarted systemd service: openclaw-gateway.service
+[hostname]::~$ openclaw gateway status --deep --require-rpc
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — If you can describe it, I can probably automate it—or at least make it funnier.
+
+│
+◇  
+Service: systemd user (enabled)
+File logs: /tmp/openclaw/openclaw-2026-08-13.log
+Command: /usr/bin/node /usr/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Service file: ~/.config/systemd/user/openclaw-gateway.service
+Service env: OPENCLAW_GATEWAY_PORT=18789
+Gateway heap: 8192 MiB (adaptive default: 50% of [SYSTEM_RAM_REDACTED] physical memory, target range 2048-8192 MiB, native headroom cap [NATIVE_HEADROOM_REDACTED])
+
+Config (cli): ~/.openclaw/openclaw.json
+Config (service): ~/.openclaw/openclaw.json
+
+Gateway: bind=loopback (127.0.0.1), port=18789 (service args)
+Probe target: ws://127.0.0.1:18789
+Dashboard: http://127.0.0.1:18789/
+Probe note: Loopback-only gateway; only local clients can connect.
+
+CLI version: 2026.7.2-beta.7 (/usr/bin/openclaw)
+Gateway version: 2026.7.2-beta.7
+
+Runtime: running (pid 2906028, state active, sub running, last exit 0, reason 0)
+Recent restart handoff: full-process via systemd; source=operator-restart; reason=gateway.restart; pid=[PID_REDACTED]; age=32s; expiresIn=27s
+Read probe: ok
+Capability: connected-no-operator-scope
+
+Established clients: 1
+  [LOCAL_BROWSER_CLIENT_DETAILS_REDACTED]
+If logs show protocol mismatch after rollback, stop stale OpenClaw client processes listed here and re-run gateway status.
+
+Listening: 127.0.0.1:18789, [::1]:18789
+Troubles: run openclaw status
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+[hostname]::~$ openclaw health --verbose
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — One CLI to rule them all, and one more restart because you changed the port.
+
+│
+◇  
+Gateway connection:
+  Gateway target: ws://127.0.0.1:18789
+  Source: local loopback
+  Config: /home/[USER]/.openclaw/openclaw.json
+  Bind: loopback
+Telegram: configured
+WhatsApp: linked (auth age 3m)
+Gateway event loop: degraded reasons=event_loop_delay max=6925ms p99=1156ms util=0.712 cpu=0.891
+Delivery queue: warning (dead-lettered entries — outbound: 4; oldest 1d ago)
+Gateway probe duration: 20ms
+Agents: main (default)
+Heartbeat interval: 30m (main)
+Session store (main): /home/[USER]/.openclaw/agents/main/sessions/sessions.json (12 entries)
+- agent:main:dreaming-narrative-memory-core-v2-rem-0db340eb5265 (0m ago)
+- agent:main:dreaming-narrative-memory-core-v2-light-0db340eb5265 (0m ago)
+- agent:main:cron:[UUID_REDACTED] (0m ago)
+- agent:main:cron:[UUID_REDACTED] (1m ago)
+- agent:main:cron:[UUID_REDACTED] (9m ago)
+[hostname]::~$ sed -n '1,260p' ~/.local/bin/openclaw-wa-healthcheck.sh
+#!/usr/bin/env bash
+# openclaw-wa-healthcheck.sh
+# Self-heal the OpenClaw WhatsApp bridge: every 50s (via systemd timer) check
+# that WhatsApp is actually running; if the account is stopped/not-running,
+# restart the gateway so the bridge re-establishes in-process.
+#
+# Why a gateway restart: the WhatsApp transport runs inside the gateway node
+# process (no standalone binary). If the account shows "stopped/not-running"
+# while the gateway is otherwise "healthy", the only reliable recovery is to
+# restart the gateway, which re-initializes all channel transports.
+#
+# Log: journalctl --user -u openclaw-wa-healthcheck.service
+set -u
+
+BIN="/home/[USER]/.npm-global/bin/openclaw"
+LOG_TAG="wa-healthcheck"
+STATE_FILE="/tmp/openclaw-wa-healthcheck.stamp"
+
+# ---- guard: avoid running two checks at once ----
+exec 9>"${STATE_FILE}.lock"
+if ! flock -n 9; then
+  exit 0  # another instance is running; skip
+fi
+
+# ---- gather status (exit code is always 0; we parse text) ----
+STATUS="$(${BIN} channels status --probe 2>&1)"
+RC=$?
+if [ ${RC} -ne 0 ]; then
+  logger -t "${LOG_TAG}" "channels status failed (rc=${RC}); assuming bridge down, will restart gateway"
+  RESTART=1
+else
+  RESTART=0
+  # Any WhatsApp account health:not-running or state:stopped => bridge is down
+  if echo "${STATUS}" | grep -qi "whatsapp" && \
+     ( echo "${STATUS}" | grep -qiE "whatsapp .*health:not-running|whatsapp .*stopped" ); then
+    RESTART=1
+  elif ! echo "${STATUS}" | grep -qi "whatsapp"; then
+    # WhatsApp not present at all => channel failed to load entirely
+    RESTART=1
+  fi
+fi
+
+if [ "${RESTART}" -eq 1 ]; then
+  logger -t "${LOG_TAG}" "WhatsApp bridge down; restarting openclaw-gateway"
+  systemctl --user restart openclaw-gateway
+  date +%s > "${STATE_FILE}"
+else
+  logger -t "${LOG_TAG}" "WhatsApp healthy; no action"
+fi
+
+flock -u 9
+exit 0
+[hostname]::~$ systemctl --user stop openclaw-wa-healthcheck.timer
+systemctl --user disable openclaw-wa-healthcheck.timer
+openclaw gateway restart
+│
+◇  
+
+OpenClaw 2026.7.2-beta.7 ([BUILD_COMMIT_REDACTED]) — I ask before I sudo. Character development.
+
+Restarted systemd service: openclaw-gateway.service
+[hostname]::~$ sed -n '1,260p' ~/.local/bin/openclaw-wa-healthcheck.sh
+#!/usr/bin/env bash
+# openclaw-wa-healthcheck.sh
+# Self-heal the OpenClaw WhatsApp bridge: every 50s (via systemd timer) check
+# that WhatsApp is actually running; if the account is stopped/not-running,
+# restart the gateway so the bridge re-establishes in-process.
+#
+# Why a gateway restart: the WhatsApp transport runs inside the gateway node
+# process (no standalone binary). If the account shows "stopped/not-running"
+# while the gateway is otherwise "healthy", the only reliable recovery is to
+# restart the gateway, which re-initializes all channel transports.
+#
+# Log: journalctl --user -u openclaw-wa-healthcheck.service
+set -u
+
+BIN="/home/[USER]/.npm-global/bin/openclaw"
+LOG_TAG="wa-healthcheck"
+STATE_FILE="/tmp/openclaw-wa-healthcheck.stamp"
+
+# ---- guard: avoid running two checks at once ----
+exec 9>"${STATE_FILE}.lock"
+if ! flock -n 9; then
+  exit 0  # another instance is running; skip
+fi
+
+# ---- gather status (exit code is always 0; we parse text) ----
+STATUS="$(${BIN} channels status --probe 2>&1)"
+RC=$?
+if [ ${RC} -ne 0 ]; then
+  logger -t "${LOG_TAG}" "channels status failed (rc=${RC}); assuming bridge down, will restart gateway"
+  RESTART=1
+else
+  RESTART=0
+  # Any WhatsApp account health:not-running or state:stopped => bridge is down
+  if echo "${STATUS}" | grep -qi "whatsapp" && \
+     ( echo "${STATUS}" | grep -qiE "whatsapp .*health:not-running|whatsapp .*stopped" ); then
+    RESTART=1
+  elif ! echo "${STATUS}" | grep -qi "whatsapp"; then
+    # WhatsApp not present at all => channel failed to load entirely
+    RESTART=1
+  fi
+fi
+
+if [ "${RESTART}" -eq 1 ]; then
+  logger -t "${LOG_TAG}" "WhatsApp bridge down; restarting openclaw-gateway"
+  systemctl --user restart openclaw-gateway
+  date +%s > "${STATE_FILE}"
+else
+  logger -t "${LOG_TAG}" "WhatsApp healthy; no action"
+fi
+
+flock -u 9
+exit 0
+[hostname]::~$ cp ~/.local/bin/openclaw-wa-healthcheck.sh \
+   ~/.local/bin/openclaw-wa-healthcheck.sh.bak-20260813
+[hostname]::~$ cat > ~/.local/bin/openclaw-wa-healthcheck.sh <<'EOF'
+#!/usr/bin/env bash
+
+set -u
+
+BIN="/usr/bin/openclaw"
+LOG_TAG="wa-healthcheck"
+
+STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}/openclaw-wa-healthcheck"
+FAIL_FILE="${STATE_DIR}/failures"
+RESTART_FILE="${STATE_DIR}/last-restart"
+LOCK_FILE="${STATE_DIR}/lock"
+
+# Require this many confirmed failures before recovery.
+MAX_FAILURES=3
+
+# Never restart the whole gateway more often than this.
+RESTART_COOLDOWN=600
+
+mkdir -p "$STATE_DIR"
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+    exit 0
+fi
+
+log() {
+    logger -t "$LOG_TAG" "$*"
+}
+
+reset_failures() {
+    echo 0 > "$FAIL_FILE"
+}
+
+get_failures() {
+    if [[ -r "$FAIL_FILE" ]]; then
+        cat "$FAIL_FILE"
+    else
+        echo 0
+    fi
+}
+
+# ------------------------------------------------------------
+# 1. Verify the OpenClaw CLI itself exists.
+# A broken watchdog must NEVER restart the gateway.
+EOFt 0ctl --user restart openclaw-gateway.serviceS} probes; restarting OpenClaw gateway once"DOWN}s)"
+[hostname]::~$ chmod 755 ~/.local/bin/openclaw-wa-healthcheck.sh
+[hostname]::~$ ~/.local/bin/openclaw-wa-healthcheck.sh
+[hostname]::~$ journalctl --user -t wa-healthcheck -n 20 --no-pager
+Aug 13 03:24:37 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:25:32 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:25:32 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:26:27 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:26:27 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:27:22 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:27:22 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:28:17 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:28:17 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:29:12 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:29:12 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:30:07 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:30:07 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:30:58 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:30:58 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:31:52 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:31:52 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:32:47 [HOSTNAME] wa-healthcheck[PID_REDACTED]: channels status failed (rc=127); assuming bridge down, will restart gateway
+Aug 13 03:32:47 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp bridge down; restarting openclaw-gateway
+Aug 13 03:44:26 [HOSTNAME] wa-healthcheck[PID_REDACTED]: WhatsApp healthy; no action
+[hostname]::~$ sed -i \
+  's/OnUnitActiveSec=50/OnUnitActiveSec=15min/' \
+  ~/.config/systemd/user/openclaw-wa-healthcheck.timer
+[hostname]::~$ systemctl --user daemon-reload
+[hostname]::~$ systemctl --user enable --now openclaw-wa-healthcheck.timer
+Created symlink /home/[USER]/.config/systemd/user/timers.target.wants/openclaw-wa-healthcheck.timer → /home/[USER]/.config/systemd/user/openclaw-wa-healthcheck.timer.
+[hostname]::~$ 
