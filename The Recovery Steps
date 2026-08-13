@@ -1,0 +1,75 @@
+The recovery sequence was:
+
+Identify duplicate OpenClaw installations.
+Remove the obsolete ~/.npm-global copy and ensure /usr/bin/openclaw is the active CLI.
+Align the CLI and Gateway versions.
+Confirm both execute the same OpenClaw build.
+
+Repair/migrate the configuration.
+Back up the configuration, run the appropriate migration/doctor process, and verify with:
+
+openclaw config validate
+Identify the incomplete beta.6 release set.
+Confirm that core 2026.7.2-beta.6 existed but matching official plugin packages were not published.
+Do not blindly follow the moving beta dist-tag.
+The core beta tag had already advanced beyond the plugin release line.
+Move to the complete 2026.7.2-beta.7 release set.
+Explicitly align official plugins.
+DeepSeek and WhatsApp upgraded correctly; Brave and llama.cpp required explicit npm installs because 
+their recorded ClawHub sources kept them on 2026.7.1.
+
+Verify every plugin at runtime.
+
+openclaw plugins inspect <plugin> --runtime --json
+Investigate intermittent Gateway ECONNREFUSED errors rather than assuming authentication failure.
+
+Use systemd evidence to distinguish crashes from intentional restarts.
+
+NRestarts=0
+clean SIGTERM
+clean shutdown
+predictable ~50-second interval
+
+proved the Gateway was being deliberately restarted.
+
+Locate the external restart source.
+openclaw-wa-healthcheck.timer was executing every 50 seconds.
+
+Identify the stale health-check executable path.
+
+old:
+~/.npm-global/bin/openclaw
+
+correct:
+/usr/bin/openclaw
+Stop the restart loop and harden the watchdog.
+
+Diagnostic failures must no longer mean “restart Gateway.”
+Reduce the WhatsApp health-check interval to 15 minutes.
+The watchdog now checks four times per hour rather than approximately 72 times per hour.
+
+Perform one final controlled Gateway restart and verify:
+
+openclaw gateway status --deep --require-rpc
+openclaw health --verbose
+
+Final result:
+
+OpenClaw 2026.7.2-beta.7 stable
+Gateway RPC responsive
+Official plugins version-aligned
+WhatsApp linked
+WhatsApp DM allowlist preserved
+WhatsApp groups disabled
+No forced 50-second Gateway restart loop
+
+####
+Suggested upstream improvements
+
+The OpenClaw upgrade experience could be made more resilient by warning when an older OpenClaw executable 
+exists elsewhere in PATH, ensuring beta core releases are not published without matching official plugin 
+builds, avoiding recommendations for exact plugin versions that do not exist, and making plugin 
+source/version drift more explicit during upgrades.
+
+The local watchdog issue itself was not an OpenClaw core defect, but it illustrates why 
+channel-specific monitoring should avoid restarting the entire Gateway on a single failed CLI probe.
