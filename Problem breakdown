@@ -1,0 +1,520 @@
+The final stable configuration was:
+
+OpenClaw Core:       2026.7.2-beta.7
+Gateway:             2026.7.2-beta.7
+
+Brave Plugin:        2026.7.2-beta.7
+DeepSeek Provider:   2026.7.2-beta.7
+llama.cpp Provider:  2026.7.2-beta.7
+WhatsApp Plugin:     2026.7.2-beta.7
+
+The instability ultimately involved three separate problems:
+
+Two OpenClaw CLI installations existed simultaneously, 
+with an older user-local CLI being invoked against state created by a newer system-wide installation.
+OpenClaw 2026.7.2-beta.6 was published without corresponding beta.6 releases of several official plugins, 
+making exact version alignment impossible.
+After upgrading everything to 2026.7.2-beta.7, a locally installed WhatsApp health-check watchdog still 
+referenced the removed old CLI path. 
+
+Its failed health checks repeatedly restarted the otherwise healthy Gateway.
+
+The final issue was particularly misleading because Gateway probes frequently returned ECONNREFUSED or 
+WebSocket 1006, even though the Gateway was functioning correctly between watchdog-triggered restarts.
+
+Sanitized Environment
+OS: Ubuntu Linux x86_64
+Node.js: 22.x
+Service manager: systemd --user
+OpenClaw install: global npm/system install
+Gateway bind: loopback
+Gateway port: 18789
+OpenClaw target version: 2026.7.2-beta.7
+
+Sensitive details intentionally omitted:
+
+Hostname
+Linux username
+Tailscale domain/IP
+Gateway token
+WhatsApp phone numbers
+Telegram credentials
+API keys
+Provider credentials
+Machine-specific paths containing username
+
+Generic paths below use:
+
+~
+/usr/bin/openclaw
+~/.openclaw/
+
+Issue 1 — Multiple OpenClaw CLI Installations
+Symptoms
+
+The system initially had two different OpenClaw installations.
+
+An older user-local npm installation was being executed:
+
+~/.npm-global/bin/openclaw
+2026.7.1-2
+
+while the system service was using the newer installation:
+
+/usr/bin/openclaw
+2026.7.2-beta.6
+
+This caused the older CLI to attempt to access state created by the newer release.
+
+A representative error was:
+
+OpenClaw state database ~/.openclaw/state/openclaw.sqlite
+uses newer schema version 6;
+this OpenClaw build supports 1.
+Root Cause
+
+Shell PATH resolution was still selecting the old user npm installation.
+
+The Gateway itself was running from the newer system installation.
+
+Effectively:
+
+CLI
+  ↓
+old OpenClaw
+
+Gateway
+  ↓
+new OpenClaw
+
+State DB
+  ↓
+new schema
+
+This caused misleading schema and configuration errors.
+
+Resolution
+
+Remove the obsolete user-global installation:
+
+npm uninstall -g openclaw
+hash -r
+
+Then verify:
+
+openclaw --version
+type -a openclaw
+
+The expected CLI should be:
+
+/usr/bin/openclaw
+
+The CLI and Gateway should report the same version.
+
+Issue 2 — Configuration Migration After the Upgrade
+
+Once the correct CLI was running, the newer OpenClaw release identified several legacy configuration properties.
+
+Examples included migrated or removed settings related to:
+
+models.pricing
+agents.defaults.memorySearch
+agents.defaults.envelopeElapsed
+agents.defaults.imageGenerationModel
+gateway.nodes.denyCommands
+WhatsApp heartbeat/debounce configuration
+older model catalog references
+
+openclaw doctor --fix successfully migrated most of the configuration.
+
+A valid recovered configuration was then installed as:
+
+~/.openclaw/openclaw.json
+
+Validation was performed with:
+
+openclaw config validate
+
+Result:
+
+Config valid
+
+A configuration backup before running migration tools is strongly recommended.
+
+Issue 3 — OpenClaw 2026.7.2-beta.6 Had No Matching Official Plugin Builds
+
+After the core was upgraded to:
+
+2026.7.2-beta.6
+
+Gateway status reported official plugin drift.
+
+The affected plugins included:
+
+Brave
+DeepSeek
+llama.cpp
+WhatsApp
+
+The Gateway expected:
+
+2026.7.2-beta.6
+
+but matching plugin versions could not be installed.
+
+Direct npm checks confirmed:
+
+openclaw@2026.7.2-beta.6
+    EXISTS
+
+@openclaw/whatsapp@2026.7.2-beta.6
+    NOT PUBLISHED
+
+@openclaw/deepseek-provider@2026.7.2-beta.6
+    NOT PUBLISHED
+
+@openclaw/brave-plugin@2026.7.2-beta.6
+    NOT PUBLISHED
+
+@openclaw/llama-cpp-provider@2026.7.2-beta.6
+    NOT PUBLISHED
+
+This meant the Gateway's recommended command to update plugins to the exact core version could not succeed.
+
+Attempts similar to:
+
+openclaw plugins update \
+  @openclaw/whatsapp@2026.7.2-beta.6
+
+returned:
+
+Package not found on npm
+Important Upgrade Hazard
+
+At the same time, npm showed that the generic core beta tag had advanced beyond this release:
+
+openclaw beta
+→ 2026.8.1-beta.1
+
+while the relevant plugins still had:
+
+plugin beta
+→ 2026.7.2-beta.7
+
+Therefore this would have been risky:
+
+openclaw update --channel beta
+
+because it could move the core farther ahead of the plugins.
+
+Resolution
+
+We identified 2026.7.2-beta.7 as the first common release where the required official plugin 
+packages existed.
+
+The core was explicitly aligned to:
+
+2026.7.2-beta.7
+
+instead of blindly following the moving beta dist-tag.
+
+Issue 4 — Brave and llama.cpp Continued Following Old ClawHub Install Sources
+
+After moving the core to 2026.7.2-beta.7:
+
+DeepSeek:  2026.7.2-beta.7
+WhatsApp:  2026.7.2-beta.7
+
+were correctly aligned.
+
+However:
+
+Brave:      2026.7.1
+llama-cpp:  2026.7.1
+
+remained behind.
+
+Gateway status identified them as originating from:
+
+clawhub
+
+Ordinary commands such as:
+
+openclaw plugins update brave
+openclaw plugins update llama-cpp
+
+continued following their previously recorded install source.
+
+Resolution
+
+The plugins were explicitly reinstalled from npm and pinned to the exact OpenClaw version:
+
+openclaw plugins install \
+  npm:@openclaw/brave-plugin@2026.7.2-beta.7 \
+  --force --pin
+openclaw plugins install \
+  npm:@openclaw/llama-cpp-provider@2026.7.2-beta.7 \
+  --force --pin
+
+Runtime inspection subsequently showed:
+
+packageVersion:            2026.7.2-beta.7
+version:                   2026.7.2-beta.7
+builtWithOpenClawVersion:  2026.7.2-beta.7
+status:                    loaded
+source:                    npm
+
+for all four official plugins.
+
+The plugin drift warning disappeared.
+
+Issue 5 — Gateway Appeared Unstable After Everything Was Correctly Aligned
+
+After the plugin issue was fixed, Gateway status intermittently showed:
+
+Runtime: running
+
+Read probe: failed
+
+connect ECONNREFUSED 127.0.0.1:18789
+
+and sometimes:
+
+WebSocket close 1006
+
+At other times:
+
+ss -ltnp | grep ':18789'
+
+showed the Gateway listening normally:
+
+127.0.0.1:18789
+[::1]:18789
+
+and:
+
+curl http://127.0.0.1:18789/
+
+returned:
+
+HTTP 200
+
+The Control UI also successfully connected and executed WebSocket RPC requests.
+
+This initially looked like a Gateway networking or authentication regression.
+
+It was not.
+
+Diagnostic Breakthrough — The Gateway Was Being Intentionally Restarted
+
+Systemd reported:
+
+Result=success
+NRestarts=0
+ActiveState=active
+SubState=running
+
+This was critical.
+
+NRestarts=0 indicated the service manager was not restarting the Gateway because of crashes.
+
+The journal instead showed repeated clean shutdowns:
+
+Stopping openclaw-gateway.service
+[admission] closed: restart drain
+[gateway] received SIGTERM; shutting down
+[shutdown] completed cleanly
+Started openclaw-gateway.service
+
+The pattern repeated approximately every 50–55 seconds.
+
+Example pattern:
+
+Gateway starts
+~53 seconds
+Gateway receives SIGTERM
+Gateway shuts down cleanly
+Gateway starts
+~53 seconds
+Gateway receives SIGTERM
+
+This established that an external process was deliberately executing a Gateway restart.
+
+Issue 6 — Custom WhatsApp Watchdog Was Restarting a Healthy Gateway
+
+The following user-level systemd timer was discovered:
+
+openclaw-wa-healthcheck.timer
+
+Its configuration included:
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=50
+AccuracySec=5s
+Unit=openclaw-wa-healthcheck.service
+
+The associated service executed:
+
+~/.local/bin/openclaw-wa-healthcheck.sh
+
+The journal showed:
+
+WhatsApp bridge down; restarting openclaw-gateway
+
+followed immediately by the Gateway shutdown.
+
+This exactly matched the unexplained restart timestamps.
+
+Actual Script Bug
+
+The watchdog still contained the obsolete OpenClaw path:
+
+BIN="~/.npm-global/bin/openclaw"
+
+That installation had already been removed during the earlier duplicate-CLI cleanup.
+
+The new OpenClaw executable was:
+
+/usr/bin/openclaw
+
+The watchdog logic was essentially:
+
+STATUS="$(${BIN} channels status --probe 2>&1)"
+RC=$?
+
+if [ ${RC} -ne 0 ]; then
+    # Assume WhatsApp is down
+    RESTART=1
+fi
+
+Therefore:
+
+old OpenClaw executable missing
+          ↓
+health-check command fails
+          ↓
+nonzero exit status
+          ↓
+script assumes WhatsApp failed
+          ↓
+systemctl --user restart openclaw-gateway
+          ↓
+Gateway temporarily unavailable
+          ↓
+watchdog runs again
+          ↓
+repeat
+
+The OpenClaw Gateway itself was healthy.
+
+Additional Feedback Loop
+
+During repeated reconnects the WhatsApp plugin also reported:
+
+Failed hydrating participating groups on connect:
+Error: rate-overlimit
+
+The evidence does not establish that this was the original cause of the restart problem.
+
+A reasonable inference is that repeatedly reconnecting the WhatsApp client every minute 
+aggravated the provider-side rate limiting.
+
+The restart watchdog therefore potentially created a self-reinforcing loop:
+
+health-check failure
+      ↓
+Gateway restart
+      ↓
+WhatsApp reconnect
+      ↓
+metadata/group hydration
+      ↓
+rate-overlimit
+      ↓
+next watchdog probe
+      ↓
+restart again
+WhatsApp Access Control Was Not the Problem
+
+The WhatsApp plugin itself loaded correctly.
+
+The final configuration continued to enforce:
+
+DM policy: allowlist
+Allowed senders:
+    <REDACTED-ALLOWED-NUMBER-1>
+    <REDACTED-ALLOWED-NUMBER-2>
+
+Group policy: disabled
+
+Runtime logs confirmed:
+
+Listening for WhatsApp inbound messages
+(DM + groups disabled by groupPolicy)
+
+No sensitive telephone numbers should be included in a public issue report.
+
+Watchdog Fix
+
+The immediate fix was to stop the faulty watchdog:
+
+systemctl --user stop openclaw-wa-healthcheck.timer
+
+and prevent it from automatically returning until corrected:
+
+systemctl --user disable openclaw-wa-healthcheck.timer
+
+The script should use:
+
+BIN="/usr/bin/openclaw"
+
+instead of the deleted user-local npm path.
+
+More importantly, a health-check command failure should be treated as:
+
+UNKNOWN
+
+rather than:
+
+WHATSAPP DOWN
+
+A failed diagnostic command should not automatically restart the entire Gateway.
+
+The corrected watchdog should only restart after multiple explicit WhatsApp failures and should include a restart cooldown.
+
+Revised Watchdog Frequency
+
+The original timer checked every: 50 seconds
+
+This was unnecessarily aggressive for a WhatsApp self-healing mechanism.
+The timer has now been changed to 15 minutes or 4 checks per hour, 
+This substantially reduces unnecessary probing and reconnect/restart pressure.
+
+A reasonable recovery strategy is Check every 15 minutes, Else perform one controlled recovery.
+
+Once the timer-induced restart loop was stopped, Gateway status showed:
+
+CLI version:      2026.7.2-beta.7
+Gateway version:  2026.7.2-beta.7
+
+Runtime: running
+Read probe: ok
+
+Listening:
+127.0.0.1:18789
+[::1]:18789
+
+The WebSocket Control UI successfully connected.
+
+All required official plugins were aligned:
+
+Brave          2026.7.2-beta.7
+DeepSeek       2026.7.2-beta.7
+llama.cpp      2026.7.2-beta.7
+WhatsApp       2026.7.2-beta.7
+
+There was no remaining official-plugin version drift.
+
+Conclusion — Steps That Restored OpenClaw 2026.7.2-beta.7 to Stability
+
